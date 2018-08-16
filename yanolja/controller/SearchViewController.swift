@@ -308,7 +308,7 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchViewCell
-        cell.pensionImageView.image = #imageLiteral(resourceName: "Kermit_Muppets")
+        cell.pensionImageView.image = #imageLiteral(resourceName: "bg02")
         cell.pensionImageView.contentMode = .scaleToFill
         cell.pensionLocation.text = "Pension Location"
         cell.pensionName.text = "Pension Name"
