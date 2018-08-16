@@ -10,8 +10,6 @@ import UIKit
 
 class HomeViewController: UIViewController, HomeCellDelegate{
     
-    @IBOutlet weak var pensionTableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,7 +52,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! HomeTableViewCell
-        cell.pensionImage.image = #imageLiteral(resourceName: "Kermit_Sick")
+        cell.pensionImage.image = UIImage(named: "bg02")
         cell.pensionImage.contentMode = .scaleToFill
         cell.pensionName.text = pensionData[indexPath.row].pensionName
         cell.pensionTag.text = "simple Tag"
