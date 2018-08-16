@@ -1,0 +1,73 @@
+PODS:
+  - Alamofire (4.7.3)
+  - JSONParserSwift (1.1.4)
+  - libwebp (0.6.1):
+    - libwebp/core (= 0.6.1)
+    - libwebp/dec (= 0.6.1)
+    - libwebp/demux (= 0.6.1)
+    - libwebp/dsp (= 0.6.1)
+    - libwebp/enc (= 0.6.1)
+    - libwebp/mux (= 0.6.1)
+    - libwebp/utils (= 0.6.1)
+    - libwebp/webp (= 0.6.1)
+  - libwebp/core (0.6.1):
+    - libwebp/webp
+  - libwebp/dec (0.6.1):
+    - libwebp/core
+  - libwebp/demux (0.6.1):
+    - libwebp/core
+  - libwebp/dsp (0.6.1):
+    - libwebp/core
+  - libwebp/enc (0.6.1):
+    - libwebp/core
+  - libwebp/mux (0.6.1):
+    - libwebp/core
+  - libwebp/utils (0.6.1):
+    - libwebp/core
+  - libwebp/webp (0.6.1)
+  - MGSwipeTableCell (1.6.7)
+  - MXSegmentedControl (0.1.0)
+  - SDWebImage/Core (4.4.2)
+  - SDWebImage/WebP (4.4.2):
+    - libwebp (~> 0.5)
+    - SDWebImage/Core
+  - SVProgressHUD (2.2.5)
+  - Toaster (2.1.1)
+  - XLPagerTabStrip (8.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - JSONParserSwift
+  - MGSwipeTableCell (~> 1.6)
+  - MXSegmentedControl
+  - SDWebImage/WebP
+  - SVProgressHUD (~> 2.2)
+  - Toaster
+  - XLPagerTabStrip (~> 8.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - JSONParserSwift
+    - libwebp
+    - MGSwipeTableCell
+    - MXSegmentedControl
+    - SDWebImage
+    - SVProgressHUD
+    - Toaster
+    - XLPagerTabStrip
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  JSONParserSwift: fff6c8aee929431cfbb10d016e9b92f06f732057
+  libwebp: 0f01098c6c17175391af621b2f14150f3ca16e16
+  MGSwipeTableCell: fb20e983988bde2b8d0df29c2d9e1d8ffd10b74a
+  MXSegmentedControl: 47b36aac2fda4d8c9117ab05088937e8c102796f
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
+  XLPagerTabStrip: c908b17cbf42fcd2598ee1adfc49bae25444d88a
+
+PODFILE CHECKSUM: 4e90ebd38ff2d05236d604eb5de217ccc53fcfe9
+
+COCOAPODS: 1.5.3
