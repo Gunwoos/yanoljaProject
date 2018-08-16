@@ -10,13 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, HomeCellDelegate{
     
-    let pensionImageList = [
-        UIImage(named:"Kermit_Sick"),
-        UIImage(named:"Kermit_puppeteer_fired"),
-        UIImage(named:"Kermit_poleDance"),
-        UIImage(named:"Kermit_Muppets"),
-        UIImage(named:"Kermit_Goodbye"),
-        ]
+    @IBOutlet weak var pensionTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +20,9 @@ class HomeViewController: UIViewController, HomeCellDelegate{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
+
+    
     
     func setHomeTitle(){
         let titleString = "Yanolja Pension"
@@ -54,16 +49,16 @@ class HomeViewController: UIViewController, HomeCellDelegate{
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pensionImageList.count
+        return pensionData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! HomeTableViewCell
-        cell.pensionImage.image = pensionImageList[indexPath.row]
+        cell.pensionImage.image = #imageLiteral(resourceName: "Kermit_Sick")
         cell.pensionImage.contentMode = .scaleToFill
-        cell.pensionName.text = "simple Name"
+        cell.pensionName.text = pensionData[indexPath.row].pensionName
         cell.pensionTag.text = "simple Tag"
-        cell.pensionPrice.text = "50000"
+        cell.pensionPrice.text = String(pensionData[indexPath.row].pensionLowestPrice)
         
         return cell
     }
