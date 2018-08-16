@@ -11,7 +11,10 @@ import MapKit
 import UIKit
 
 final class LocationInfo: MKPointAnnotation{
-    var fensionTitle : String!
+    var pensionTitle: String!
+    var pensionImageURL: String!
+    var pensionPrice: Int!
+    var pensionRoomNum: Int!
 }
 /*
  서울 37.552498, 126.993661
@@ -73,9 +76,23 @@ class SearchViewController: UIViewController {
             newLocation3.title = "sample"
             newLocation3.coordinate = CLLocationCoordinate2DMake(37.807951, 128.902604)
             
-            mapView.addAnnotation(newLocation)
-            mapView.addAnnotation(newLocation2)
-            mapView.addAnnotation(newLocation3)
+            for i in 0...pensionData.count-1{
+                let newLocation = LocationInfo()
+                newLocation.title = pensionData[i].pensionName
+                newLocation.pensionImageURL = pensionData[i].pensionImage
+                newLocation.pensionPrice = pensionData[i].pensionLowestPrice
+                newLocation.coordinate = CLLocationCoordinate2DMake(
+                    pensionData[i].pensionLatitude,
+                    pensionData[i].pensionLongitude
+                )
+                
+                
+                mapView.addAnnotation(newLocation)
+            }
+            
+//            mapView.addAnnotation(newLocation)
+//            mapView.addAnnotation(newLocation2)
+//            mapView.addAnnotation(newLocation3)
             
         }
         else if checkMapViewLevel == 1{
@@ -140,7 +157,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func setPensionInfo(_ sender: MKAnnotationView){
+    func setPensionInfo(_ sender: MKAnnotationView, _ mapView: MKMapView){
         let findLocation = CLLocation(latitude: (sender.annotation?.coordinate.latitude)!, longitude: (sender.annotation?.coordinate.longitude)!)
         let geocoder = CLGeocoder()
         let local = Locale(identifier: "Ko-kr")
@@ -152,6 +169,12 @@ class SearchViewController: UIViewController {
                 }
             }
         }
+        self.PensionName.text = (sender.annotation?.title)!
+        print((sender.annotation as? LocationInfo)?.pensionPrice)
+//        self.PensionPrice.text = sender.annotation?.
+        
+        
+        
     }
     
 }
@@ -232,13 +255,18 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
                 })
         },
             completion: { _ in
-                self.setPensionInfo(view)
+                self.setPensionInfo(view, mapView)
+                
                 if self.LocationInfoView.isHidden == true{
                     self.LocationInfoView.isHidden = false
                 }
                 else{
                     self.LocationInfoView.isHidden = true
                 }
+                
+                print(mapView.annotations)
+                print(view.annotation!)
+                
         })
     }
 
@@ -280,7 +308,7 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchViewCell
-        cell.pensionImageView.image = #imageLiteral(resourceName: "Kermit_Muppets")
+        cell.pensionImageView.image = #imageLiteral(resourceName: "bg02")
         cell.pensionImageView.contentMode = .scaleToFill
         cell.pensionLocation.text = "Pension Location"
         cell.pensionName.text = "Pension Name"
