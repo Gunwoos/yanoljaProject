@@ -20,10 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        fetchPensionAPI()
-        
-    
-        
         return true
     }
     

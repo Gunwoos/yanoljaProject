@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, HomeCellDelegate{
         super.viewDidLoad()
         
         setHomeTitle()
+        fetchPensionAPI()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,16 +50,21 @@ class HomeViewController: UIViewController, HomeCellDelegate{
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pensionData.count
+        var rowNum = 0
+//        for i in 0...pensionLocationData.count-1{
+//            rowNum = rowNum + pensionLocationData[i].pensionOfNum
+//        }
+        
+        return rowNum
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! HomeTableViewCell
         cell.pensionImage.image = #imageLiteral(resourceName: "Kermit_Sick")
         cell.pensionImage.contentMode = .scaleToFill
-        cell.pensionName.text = pensionData[indexPath.row].pensionName
+        cell.pensionName.text = "simple name"
         cell.pensionTag.text = "simple Tag"
-        cell.pensionPrice.text = String(pensionData[indexPath.row].pensionLowestPrice)
+        cell.pensionPrice.text = "simple price"
         
         return cell
     }
