@@ -332,6 +332,9 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pensionTableView" destination="sb7-fc-YCA" id="Ued-2q-HOZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7c-rD-oDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

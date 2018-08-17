@@ -11,10 +11,12 @@ import MapKit
 import UIKit
 
 final class LocationInfo: MKPointAnnotation{
+    var pensionPk: Int!
     var pensionTitle: String!
     var pensionImageURL: String!
     var pensionPrice: Int!
     var pensionRoomNum: Int!
+    var pensionSubLocation: String!
 }
 /*
  서울 37.552498, 126.993661
@@ -28,6 +30,7 @@ final class LocationInfo: MKPointAnnotation{
  경상남도 35.462627, 128.217866
  제주도 33.414339, 126.806340
  */
+
 class SearchViewController: UIViewController {
     
     @IBOutlet private weak var mapView: MKMapView!
@@ -61,26 +64,15 @@ class SearchViewController: UIViewController {
         
     }
     func addLocationAnnotations(_ checkMapViewLevel : Int){
-        
         if checkMapViewLevel == 0{
-            //37.841819, 127.536392
-            let newLocation = LocationInfo()
-            newLocation.title = "sample"
-            newLocation.coordinate = CLLocationCoordinate2DMake(37.841819, 127.536392)
-            //37.624683, 126.386889
-            let newLocation2 = LocationInfo()
-            newLocation2.title = "sample"
-            newLocation2.coordinate = CLLocationCoordinate2DMake(37.624683, 126.386889)
-            // 37.807951, 128.902604
-            let newLocation3 = LocationInfo()
-            newLocation3.title = "sample"
-            newLocation3.coordinate = CLLocationCoordinate2DMake(37.807951, 128.902604)
-            
-            for i in 0...pensionData.count-1{
+            var rowNum = 0
+            for i in 0...pensionLocationData.count-1{
+                rowNum = rowNum + pensionLocationData[i].pensionOfNum
+            }
+            print("pensionNum : \(rowNum)")
+            for i in 0...rowNum{
                 let newLocation = LocationInfo()
                 newLocation.title = pensionData[i].pensionName
-                newLocation.pensionImageURL = pensionData[i].pensionImage
-                newLocation.pensionPrice = pensionData[i].pensionLowestPrice
                 newLocation.coordinate = CLLocationCoordinate2DMake(
                     pensionData[i].pensionLatitude,
                     pensionData[i].pensionLongitude
@@ -89,11 +81,6 @@ class SearchViewController: UIViewController {
                 
                 mapView.addAnnotation(newLocation)
             }
-            
-//            mapView.addAnnotation(newLocation)
-//            mapView.addAnnotation(newLocation2)
-//            mapView.addAnnotation(newLocation3)
-            
         }
         else if checkMapViewLevel == 1{
             removeMK()
@@ -101,7 +88,7 @@ class SearchViewController: UIViewController {
         else{
             removeMK()
             let newLocation = LocationInfo()
-            newLocation.title = "3"
+            newLocation.title = ""
             newLocation.coordinate = CLLocationCoordinate2DMake(37.841819, 127.536392)
             
             mapView.addAnnotation(newLocation)

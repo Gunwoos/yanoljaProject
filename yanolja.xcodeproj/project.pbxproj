@@ -43,8 +43,8 @@
 		2AB0EE8321143F0000A3C4BF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0EE8221143F0000A3C4BF /* BaseViewController.swift */; };
 		2AB0EE852114505D00A3C4BF /* FindUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0EE842114505D00A3C4BF /* FindUserViewController.swift */; };
 		C4DEE554211D287A00DEFC8A /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DEE553211D287A00DEFC8A /* SearchViewCell.swift */; };
-		C4DEE556211D288C00DEFC8A /* PensionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DEE555211D288C00DEFC8A /* PensionData.swift */; };
 		C4DEE558211D28AC00DEFC8A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DEE557211D28AB00DEFC8A /* SearchViewController.swift */; };
+		C4FCBC582126C3A2008803E8 /* PensionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FCBC572126C3A2008803E8 /* PensionData.swift */; };
 		E0238DC4690FA0FF7CE92EDC /* Pods_yanolja.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA21D8BF198F51A248679BF /* Pods_yanolja.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,8 +92,8 @@
 		2E47619AA26A3D572CAFCFB3 /* Pods-yanolja.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yanolja.release.xcconfig"; path = "Pods/Target Support Files/Pods-yanolja/Pods-yanolja.release.xcconfig"; sourceTree = "<group>"; };
 		6EA21D8BF198F51A248679BF /* Pods_yanolja.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yanolja.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DEE553211D287A00DEFC8A /* SearchViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
-		C4DEE555211D288C00DEFC8A /* PensionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PensionData.swift; sourceTree = "<group>"; };
 		C4DEE557211D28AB00DEFC8A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C4FCBC572126C3A2008803E8 /* PensionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PensionData.swift; sourceTree = "<group>"; };
 		C74A3679FD51E2E620876A8D /* Pods-yanolja.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yanolja.debug.xcconfig"; path = "Pods/Target Support Files/Pods-yanolja/Pods-yanolja.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,8 +152,8 @@
 				2A26A17C2117DC4C001FE313 /* Library */,
 				2AB0EE8021143EA200A3C4BF /* Uitility */,
 				2AB0EE412114018B00A3C4BF /* HomeTableViewCell.swift */,
+				C4FCBC572126C3A2008803E8 /* PensionData.swift */,
 				C4DEE553211D287A00DEFC8A /* SearchViewCell.swift */,
-				C4DEE555211D288C00DEFC8A /* PensionData.swift */,
 				2AB0EE292114011600A3C4BF /* AppDelegate.swift */,
 				2AB0EE492114024700A3C4BF /* Extension */,
 				2AB0EE3E2114013400A3C4BF /* Storyboard */,
@@ -416,6 +416,7 @@
 				2AB0EE8321143F0000A3C4BF /* BaseViewController.swift in Sources */,
 				2AB0EE60211403B500A3C4BF /* SplashViewController.swift in Sources */,
 				2AB0EE64211403DF00A3C4BF /* LoginViewController.swift in Sources */,
+				C4FCBC582126C3A2008803E8 /* PensionData.swift in Sources */,
 				2AB0EE852114505D00A3C4BF /* FindUserViewController.swift in Sources */,
 				2AB0EE552114033300A3C4BF /* LocationViewController.swift in Sources */,
 				2AB0EE6D211404E200A3C4BF /* Page.swift in Sources */,
@@ -432,7 +433,6 @@
 				2AB0EE5E211403A000A3C4BF /* SignupViewController.swift in Sources */,
 				2AB0EE722114061F00A3C4BF /* yanolja_bridge.m in Sources */,
 				C4DEE558211D28AC00DEFC8A /* SearchViewController.swift in Sources */,
-				C4DEE556211D288C00DEFC8A /* PensionData.swift in Sources */,
 				2AB0EE4F211402E200A3C4BF /* ButtonStyle.swift in Sources */,
 				2AB0EE46211401B300A3C4BF /* Shopinfo.swift in Sources */,
 				2AB0EE2A2114011600A3C4BF /* AppDelegate.swift in Sources */,
