@@ -84,19 +84,21 @@ class HomeViewController: UIViewController, HomeCellDelegate{
                                 do{
                                     print("start input data")
                                     let pensionList = try JSONDecoder().decode([PensionData].self, from: data)
-                                    for i in 0...pensionList.count-1{
+                                    for k in 0...pensionList.count-1{
                                         let Pension = PensionList.init(
-                                            pensionPk: pensionList[i].pensionPk,
-                                            pensionName: pensionList[i].pensionName,
-                                            pensionImage: pensionList[i].pensionImage,
-                                            pensionLowestPrice: pensionList[i].pensionLowestPrice,
-                                            pensionDiscountRate: pensionList[i].pensionDiscountRate,
-                                            pensionLatitude: pensionList[i].pensionLatitude,
-                                            pensionLongitude: pensionList[i].pensionLongitude
+                                            pensionPk: pensionList[k].pensionPk,
+                                            pensionName: pensionList[k].pensionName,
+                                            pensionImage: pensionList[k].pensionImage,
+                                            pensionLowestPrice: pensionList[k].pensionLowestPrice,
+                                            pensionDiscountRate: pensionList[k].pensionDiscountRate,
+                                            pensionLatitude: pensionList[k].pensionLatitude,
+                                            pensionLongitude: pensionList[k].pensionLongitude,
+                                            pensionSubLocation: pensionLocationData[i].sublocations[j].sublocationNum
                                         )
                                         pensionData.append(Pension)
                                         self.rowNum = self.rowNum + 1
                                     }
+        
                                     DispatchQueue.global().async {
                                         DispatchQueue.main.async {
                                             self.pensionTableView.reloadData()

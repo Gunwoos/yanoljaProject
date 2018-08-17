@@ -600,6 +600,7 @@
                     <navigationItem key="navigationItem" id="amr-n6-hqg"/>
                     <connections>
                         <outlet property="LocationInfoView" destination="nG5-8T-iaY" id="cV0-cq-9Cq"/>
+                        <outlet property="PensionImage" destination="Vmj-2K-By2" id="lE5-rt-gYi"/>
                         <outlet property="PensionListTable" destination="V6y-bg-6D4" id="wOJ-pZ-Dj3"/>
                         <outlet property="PensionLocation" destination="hsL-Yg-BYh" id="SMd-kd-ROP"/>
                         <outlet property="PensionName" destination="5cw-hQ-7qR" id="Mcf-PY-OzV"/>

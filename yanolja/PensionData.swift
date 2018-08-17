@@ -128,6 +128,7 @@ struct PensionList{
     let pensionDiscountRate: Int
     let pensionLatitude: Double
     let pensionLongitude: Double
+    let pensionSubLocation: String
 }
 
 

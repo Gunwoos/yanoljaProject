@@ -12,9 +12,8 @@ import UIKit
 
 final class LocationInfo: MKPointAnnotation{
     var pensionPk: Int!
-    var pensionTitle: String!
     var pensionImageURL: String!
-    var pensionPrice: Int!
+    var pensionPrice: String!
     var pensionRoomNum: Int!
     var pensionSubLocation: String!
 }
@@ -42,6 +41,7 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var PensionName: UILabel!
     @IBOutlet private weak var PensionRoomOfNum: UILabel!
     @IBOutlet private weak var PensionPrice: UILabel!
+    @IBOutlet private weak var PensionImage: UIImageView!
     
     @IBOutlet private weak var pensionListButton: UIButton!
     
@@ -77,7 +77,10 @@ class SearchViewController: UIViewController {
                     pensionData[i].pensionLatitude,
                     pensionData[i].pensionLongitude
                 )
-                
+                newLocation.pensionPk = pensionData[i].pensionPk
+                newLocation.pensionImageURL = pensionData[i].pensionImage
+                newLocation.pensionPrice = String(pensionData[i].pensionLowestPrice)
+                newLocation.pensionSubLocation = pensionData[i].pensionSubLocation
                 
                 mapView.addAnnotation(newLocation)
             }
@@ -157,7 +160,14 @@ class SearchViewController: UIViewController {
             }
         }
         self.PensionName.text = (sender.annotation?.title)!
-        print((sender.annotation as? LocationInfo)?.pensionPrice)
+        self.PensionPrice.text = (sender.annotation as? LocationInfo)?.pensionPrice!
+        let url = URL(string: ((sender.annotation as? LocationInfo)?.pensionImageURL)!)!
+        if let data = try? Data(contentsOf: url){
+            self.PensionImage.image = UIImage(data: data)
+        }
+        else{
+            self.PensionImage.image = UIImage(named: "bg02")
+        }
 //        self.PensionPrice.text = sender.annotation?.
         
         
@@ -250,10 +260,6 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
                 else{
                     self.LocationInfoView.isHidden = true
                 }
-                
-                print(mapView.annotations)
-                print(view.annotation!)
-                
         })
     }
 
