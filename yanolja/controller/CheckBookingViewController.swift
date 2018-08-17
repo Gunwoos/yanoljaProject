@@ -10,10 +10,14 @@ import UIKit
 
 class CheckBookingViewController: UIViewController {
 
+    @IBOutlet weak var FirstView: UIView!
+    @IBOutlet weak var SecondView: UIView!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +25,18 @@ class CheckBookingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func ShowControllDidTap(_ sender: UISegmentedControl) {
+        if(sender.selectedSegmentIndex == 0) {
+            UIView.animate(withDuration: 0.2) {
+                self.FirstView.alpha = 0.0
+                self.SecondView.alpha = 1
+            }
+        }else{
+            UIView.animate(withDuration: 0.2) {
+                self.FirstView.alpha = 1
+                self.SecondView.alpha = 0
+            }
+        }
     }
-    */
 
 }

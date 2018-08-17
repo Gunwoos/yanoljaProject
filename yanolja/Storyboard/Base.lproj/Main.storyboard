@@ -163,13 +163,68 @@
                     <view key="view" contentMode="scaleToFill" id="9fn-fl-dOo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t0M-kg-Xj2">
+                                <rect key="frame" x="0.0" y="204" width="375" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GM1-Ar-md1"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="예약번호로 조회"/>
+                                    <segment title="예약자 정보로 조회"/>
+                                </segments>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="ShowControllDidTap:" destination="aRO-IG-vII" eventType="valueChanged" id="JMh-4P-vlz"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQb-OT-eCx">
+                                <rect key="frame" x="107.5" y="114" width="160" height="41"/>
+                                <string key="text">회원으로 예약하셨나요?
+로그인 후 조회하기</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMf-8L-blx">
+                                <rect key="frame" x="0.0" y="254" width="375" height="364"/>
+                                <connections>
+                                    <segue destination="zn2-La-DwN" kind="embed" id="txQ-Mk-WVR"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-pJ-2QC">
+                                <rect key="frame" x="0.0" y="254" width="375" height="364"/>
+                                <connections>
+                                    <segue destination="9j6-iT-ckq" kind="embed" id="GcO-6W-21o"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rQb-OT-eCx" firstAttribute="top" secondItem="aFc-G8-VKW" secondAttribute="top" constant="50" id="3am-aX-K01"/>
+                            <constraint firstItem="aFc-G8-VKW" firstAttribute="trailing" secondItem="KMf-8L-blx" secondAttribute="trailing" id="4PA-Jf-1sd"/>
+                            <constraint firstItem="KMf-8L-blx" firstAttribute="leading" secondItem="aFc-G8-VKW" secondAttribute="leading" id="8Xk-jw-l0H"/>
+                            <constraint firstItem="KMf-8L-blx" firstAttribute="top" secondItem="t0M-kg-Xj2" secondAttribute="bottom" id="HfA-Kj-Cas"/>
+                            <constraint firstItem="rQb-OT-eCx" firstAttribute="centerX" secondItem="aFc-G8-VKW" secondAttribute="centerX" id="Xhg-Mf-EJU"/>
+                            <constraint firstItem="xbe-pJ-2QC" firstAttribute="leading" secondItem="aFc-G8-VKW" secondAttribute="leading" id="XkQ-XI-gtq"/>
+                            <constraint firstItem="aFc-G8-VKW" firstAttribute="bottom" secondItem="KMf-8L-blx" secondAttribute="bottom" id="cKS-Di-evc"/>
+                            <constraint firstItem="aFc-G8-VKW" firstAttribute="trailing" secondItem="xbe-pJ-2QC" secondAttribute="trailing" id="cg2-Ov-tGY"/>
+                            <constraint firstItem="t0M-kg-Xj2" firstAttribute="top" secondItem="aFc-G8-VKW" secondAttribute="top" constant="140" id="dl0-mw-QFL"/>
+                            <constraint firstItem="xbe-pJ-2QC" firstAttribute="top" secondItem="t0M-kg-Xj2" secondAttribute="bottom" id="jUP-yh-6Ab"/>
+                            <constraint firstItem="aFc-G8-VKW" firstAttribute="trailing" secondItem="t0M-kg-Xj2" secondAttribute="trailing" id="oji-rz-TTX"/>
+                            <constraint firstItem="aFc-G8-VKW" firstAttribute="bottom" secondItem="xbe-pJ-2QC" secondAttribute="bottom" id="tuV-xr-hVk"/>
+                            <constraint firstItem="t0M-kg-Xj2" firstAttribute="leading" secondItem="aFc-G8-VKW" secondAttribute="leading" id="zFl-KA-XvD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aFc-G8-VKW"/>
                     </view>
                     <navigationItem key="navigationItem" title="예약조회" id="mKm-ZS-SY4"/>
+                    <connections>
+                        <outlet property="FirstView" destination="KMf-8L-blx" id="iln-fl-oKq"/>
+                        <outlet property="SecondView" destination="xbe-pJ-2QC" id="DlI-gn-xZ8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ns1-hi-noz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540" y="941.37931034482767"/>
+            <point key="canvasLocation" x="2410" y="941"/>
         </scene>
         <!--PensionDetail-->
         <scene sceneID="EWO-2F-Uvs">
@@ -281,73 +336,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7c-rD-oDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1998" y="1686"/>
-        </scene>
-        <!--Pension Detail View Controller-->
-        <scene sceneID="j60-rJ-4i1">
-            <objects>
-                <viewController storyboardIdentifier="PensionDetailViewController" id="rMI-bV-GwT" customClass="PensionDetailViewController" customModule="yanolja" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Hvh-2H-2ve">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YY6-mk-Zcy">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailTableViewCell" rowHeight="112" id="yRH-es-6eB" customClass="DetailTableViewCell" customModule="yanolja" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="112"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yRH-es-6eB" id="Phg-Z2-SXl">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="111.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAo-NT-FPI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="111.5"/>
-                                                    <color key="backgroundColor" red="0.20784313730000001" green="0.75686274509999996" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </scrollView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="OAo-NT-FPI" secondAttribute="bottom" id="1Jz-Xa-v9g"/>
-                                                <constraint firstItem="OAo-NT-FPI" firstAttribute="leading" secondItem="Phg-Z2-SXl" secondAttribute="leading" id="Ml1-fj-ngz"/>
-                                                <constraint firstItem="OAo-NT-FPI" firstAttribute="top" secondItem="Phg-Z2-SXl" secondAttribute="top" id="PMy-3b-5lx"/>
-                                                <constraint firstAttribute="trailing" secondItem="OAo-NT-FPI" secondAttribute="trailing" id="yTH-tD-tHn"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="scrollView" destination="OAo-NT-FPI" id="tan-lb-7H8"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="list" id="ovy-TK-SsN" customClass="DetailFooterTableViewCell" customModule="yanolja" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="140" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ovy-TK-SsN" id="Xoe-Xo-lha">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="rMI-bV-GwT" id="4Zh-GL-aHT"/>
-                                    <outlet property="delegate" destination="rMI-bV-GwT" id="Gcw-f2-QaK"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="qkT-zQ-N6a" firstAttribute="trailing" secondItem="YY6-mk-Zcy" secondAttribute="trailing" id="AAn-UE-e8S"/>
-                            <constraint firstItem="YY6-mk-Zcy" firstAttribute="leading" secondItem="qkT-zQ-N6a" secondAttribute="leading" id="FAq-Ek-QrM"/>
-                            <constraint firstItem="qkT-zQ-N6a" firstAttribute="bottom" secondItem="YY6-mk-Zcy" secondAttribute="bottom" id="rre-gL-b4j"/>
-                            <constraint firstItem="YY6-mk-Zcy" firstAttribute="top" secondItem="qkT-zQ-N6a" secondAttribute="top" id="sGx-gh-zGJ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qkT-zQ-N6a"/>
-                    </view>
-                    <connections>
-                        <outlet property="DetailTableView" destination="YY6-mk-Zcy" id="1Ie-qo-XWu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Plf-ID-r3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3810" y="2211"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zIW-RL-D36">
@@ -624,6 +612,34 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-258" y="2399"/>
+        </scene>
+        <!--예약번호로 조회-->
+        <scene sceneID="1nG-1o-eMB">
+            <objects>
+                <viewController title="예약번호로 조회" id="zn2-La-DwN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mu4-Wt-HUQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="364"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1h3-2f-oV8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2852" y="1678"/>
+        </scene>
+        <!--예약자정보로 조회-->
+        <scene sceneID="aK0-s5-DVG">
+            <objects>
+                <viewController title="예약자정보로 조회" id="9j6-iT-ckq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8yB-oV-rUH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="364"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yk5-5T-54b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2055" y="1678"/>
         </scene>
     </scenes>
     <resources>

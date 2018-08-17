@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, HomeCellDelegate{
         setHomeTitle()
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -52,6 +53,8 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! HomeTableViewCell
+         
+        
         cell.pensionImage.image = UIImage(named: "bg02")
         cell.pensionImage.contentMode = .scaleToFill
         cell.pensionName.text = pensionData[indexPath.row].pensionName

@@ -70,6 +70,8 @@ func fetchPensionAPI(){
                     pensionLongitude: pensionList[i].pensionLongitude
                 )
                 pensionData.append(Pension)
+                
+               
               
             }
             print("pensionData : \(pensionData)")
