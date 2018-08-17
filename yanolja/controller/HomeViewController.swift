@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, HomeCellDelegate{
         fetchPensionAPI()
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -132,6 +133,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! HomeTableViewCell
+ 
 
         
         let url = URL(string: pensionData[indexPath.row].pensionImage)!
@@ -141,8 +143,7 @@ extension HomeViewController: UITableViewDataSource {
         else{
             cell.pensionImage.image = UIImage(named: "bg02")
         }
-
-
+ 
         cell.pensionImage.contentMode = .scaleToFill
         cell.pensionName.text = pensionData[indexPath.row].pensionName
         cell.pensionTag.text = "simple Tag"
