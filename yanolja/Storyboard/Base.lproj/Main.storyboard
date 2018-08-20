@@ -138,7 +138,7 @@
                 <viewControllerPlaceholder storyboardName="Login" id="UJS-vI-TPf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="McB-4u-bBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4304.8000000000002" y="859.97001499250382"/>
+            <point key="canvasLocation" x="4114" y="1024"/>
         </scene>
         <!--빈방찾기-->
         <scene sceneID="0sW-ZG-oog">
@@ -165,7 +165,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t0M-kg-Xj2">
-                                <rect key="frame" x="0.0" y="204" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="184" width="375" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GM1-Ar-md1"/>
                                 </constraints>
@@ -179,7 +179,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQb-OT-eCx">
-                                <rect key="frame" x="107.5" y="114" width="160" height="41"/>
+                                <rect key="frame" x="107.5" y="104" width="160" height="41"/>
                                 <string key="text">회원으로 예약하셨나요?
 로그인 후 조회하기</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -187,20 +187,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMf-8L-blx">
-                                <rect key="frame" x="0.0" y="254" width="375" height="364"/>
+                                <rect key="frame" x="0.0" y="234" width="375" height="384"/>
                                 <connections>
                                     <segue destination="zn2-La-DwN" kind="embed" id="txQ-Mk-WVR"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-pJ-2QC">
-                                <rect key="frame" x="0.0" y="254" width="375" height="364"/>
+                                <rect key="frame" x="0.0" y="234" width="375" height="384"/>
                                 <connections>
                                     <segue destination="9j6-iT-ckq" kind="embed" id="GcO-6W-21o"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="rQb-OT-eCx" firstAttribute="top" secondItem="aFc-G8-VKW" secondAttribute="top" constant="50" id="3am-aX-K01"/>
+                            <constraint firstItem="rQb-OT-eCx" firstAttribute="top" secondItem="aFc-G8-VKW" secondAttribute="top" constant="40" id="3am-aX-K01"/>
                             <constraint firstItem="aFc-G8-VKW" firstAttribute="trailing" secondItem="KMf-8L-blx" secondAttribute="trailing" id="4PA-Jf-1sd"/>
                             <constraint firstItem="KMf-8L-blx" firstAttribute="leading" secondItem="aFc-G8-VKW" secondAttribute="leading" id="8Xk-jw-l0H"/>
                             <constraint firstItem="KMf-8L-blx" firstAttribute="top" secondItem="t0M-kg-Xj2" secondAttribute="bottom" id="HfA-Kj-Cas"/>
@@ -208,7 +208,7 @@
                             <constraint firstItem="xbe-pJ-2QC" firstAttribute="leading" secondItem="aFc-G8-VKW" secondAttribute="leading" id="XkQ-XI-gtq"/>
                             <constraint firstItem="aFc-G8-VKW" firstAttribute="bottom" secondItem="KMf-8L-blx" secondAttribute="bottom" id="cKS-Di-evc"/>
                             <constraint firstItem="aFc-G8-VKW" firstAttribute="trailing" secondItem="xbe-pJ-2QC" secondAttribute="trailing" id="cg2-Ov-tGY"/>
-                            <constraint firstItem="t0M-kg-Xj2" firstAttribute="top" secondItem="aFc-G8-VKW" secondAttribute="top" constant="140" id="dl0-mw-QFL"/>
+                            <constraint firstItem="t0M-kg-Xj2" firstAttribute="top" secondItem="aFc-G8-VKW" secondAttribute="top" constant="120" id="dl0-mw-QFL"/>
                             <constraint firstItem="xbe-pJ-2QC" firstAttribute="top" secondItem="t0M-kg-Xj2" secondAttribute="bottom" id="jUP-yh-6Ab"/>
                             <constraint firstItem="aFc-G8-VKW" firstAttribute="trailing" secondItem="t0M-kg-Xj2" secondAttribute="trailing" id="oji-rz-TTX"/>
                             <constraint firstItem="aFc-G8-VKW" firstAttribute="bottom" secondItem="xbe-pJ-2QC" secondAttribute="bottom" id="tuV-xr-hVk"/>
@@ -226,18 +226,10 @@
             </objects>
             <point key="canvasLocation" x="2410" y="941"/>
         </scene>
-        <!--PensionDetail-->
-        <scene sceneID="EWO-2F-Uvs">
-            <objects>
-                <viewControllerPlaceholder storyboardName="PensionDetail" id="kar-4M-bWd" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cLR-EA-hHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3051" y="1678"/>
-        </scene>
         <!--Home View Controller-->
         <scene sceneID="U8c-hC-ALm">
             <objects>
-                <viewController id="Xv6-SX-Qwi" customClass="HomeViewController" customModule="yanolja" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="Xv6-SX-Qwi" customClass="HomeViewController" customModule="yanolja" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BHh-vy-Opv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,7 +288,7 @@
                                             <outlet property="pensionName" destination="X2a-X4-fYv" id="a1a-dP-TQf"/>
                                             <outlet property="pensionPrice" destination="5Iz-bi-ibY" id="7Cu-yx-FMi"/>
                                             <outlet property="pensionTag" destination="fwn-nb-B1x" id="jYt-C7-vuB"/>
-                                            <segue destination="kar-4M-bWd" kind="show" id="ggR-tX-Mm3"/>
+                                            <segue destination="tEu-TB-yo1" kind="show" id="2q8-7T-zvN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -621,46 +613,212 @@
             <objects>
                 <viewController title="예약번호로 조회" id="zn2-La-DwN" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mu4-Wt-HUQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="364"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="예약번호로 조회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPQ-IX-IIt">
-                                <rect key="frame" x="133" y="126" width="108" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeY-N3-Cmy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="예약자" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jc6-cO-7fL" customClass="TextFieldStyle" customModule="yanolja" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="80" width="335" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="생년월일 (8자리 숫자 , YYYYMMDD)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vaQ-cp-z1s" customClass="TextFieldStyle" customModule="yanolja" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="141" width="335" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f49-q7-dut">
+                                        <rect key="frame" x="20" y="293" width="335" height="48"/>
+                                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="oBD-tq-fJK"/>
+                                        </constraints>
+                                        <state key="normal" title="로그인">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="휴대폰번호 ('-' 없이 숫자,01012345678)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nxv-D5-VWc" customClass="TextFieldStyle" customModule="yanolja" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="202" width="335" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="jc6-cO-7fL" secondAttribute="bottom" constant="263" id="0sH-Nk-3cp"/>
+                                    <constraint firstItem="f49-q7-dut" firstAttribute="top" secondItem="nxv-D5-VWc" secondAttribute="bottom" constant="70" id="EVB-la-viv"/>
+                                    <constraint firstAttribute="trailing" secondItem="nxv-D5-VWc" secondAttribute="trailing" constant="20" id="Gbm-kG-aby"/>
+                                    <constraint firstItem="jc6-cO-7fL" firstAttribute="top" secondItem="jeY-N3-Cmy" secondAttribute="top" constant="80" id="LA0-kI-fcH"/>
+                                    <constraint firstItem="vaQ-cp-z1s" firstAttribute="leading" secondItem="jeY-N3-Cmy" secondAttribute="leading" constant="20" id="PLT-CZ-6Tx"/>
+                                    <constraint firstAttribute="trailing" secondItem="jc6-cO-7fL" secondAttribute="trailing" constant="20" id="Pqd-W0-bhd"/>
+                                    <constraint firstAttribute="trailing" secondItem="vaQ-cp-z1s" secondAttribute="trailing" constant="20" id="WuN-Wm-sDX"/>
+                                    <constraint firstItem="vaQ-cp-z1s" firstAttribute="top" secondItem="jc6-cO-7fL" secondAttribute="bottom" constant="40" id="XG8-CA-leJ"/>
+                                    <constraint firstItem="jc6-cO-7fL" firstAttribute="centerX" secondItem="jeY-N3-Cmy" secondAttribute="centerX" id="ZSh-bc-Yy9"/>
+                                    <constraint firstItem="f49-q7-dut" firstAttribute="leading" secondItem="jeY-N3-Cmy" secondAttribute="leading" constant="20" id="bna-JM-rJm"/>
+                                    <constraint firstItem="nxv-D5-VWc" firstAttribute="top" secondItem="vaQ-cp-z1s" secondAttribute="bottom" constant="40" id="kkC-xe-swN"/>
+                                    <constraint firstAttribute="trailing" secondItem="f49-q7-dut" secondAttribute="trailing" constant="20" id="oi4-ze-wHx"/>
+                                    <constraint firstItem="jc6-cO-7fL" firstAttribute="leading" secondItem="jeY-N3-Cmy" secondAttribute="leading" constant="20" id="s0f-NS-MJ2"/>
+                                    <constraint firstItem="nxv-D5-VWc" firstAttribute="leading" secondItem="jeY-N3-Cmy" secondAttribute="leading" constant="20" id="zgi-ZW-y4Z"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="jeY-N3-Cmy" firstAttribute="bottom" secondItem="W0e-dZ-hd5" secondAttribute="bottom" id="84a-7u-wGZ"/>
+                            <constraint firstItem="jeY-N3-Cmy" firstAttribute="leading" secondItem="mu4-Wt-HUQ" secondAttribute="leading" id="8zA-c2-mYf"/>
+                            <constraint firstItem="jeY-N3-Cmy" firstAttribute="top" secondItem="W0e-dZ-hd5" secondAttribute="top" id="i8G-oA-K6m"/>
+                            <constraint firstAttribute="trailing" secondItem="jeY-N3-Cmy" secondAttribute="trailing" id="k94-LH-q3f"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="W0e-dZ-hd5"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1h3-2f-oV8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2852" y="1678"/>
+            <point key="canvasLocation" x="2852" y="1677.6611694152925"/>
         </scene>
         <!--예약자정보로 조회-->
         <scene sceneID="aK0-s5-DVG">
             <objects>
                 <viewController title="예약자정보로 조회" id="9j6-iT-ckq" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8yB-oV-rUH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="364"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="예약자 정보로 조회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmq-71-DJo">
-                                <rect key="frame" x="124" y="122" width="127" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-FS-YPM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="예약자" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PEq-IG-saG" customClass="TextFieldStyle" customModule="yanolja" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="80" width="335" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="예약번호 (Y123456)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wKs-Ux-uWV" customClass="TextFieldStyle" customModule="yanolja" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="141" width="335" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="underlineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryq-f4-LJZ">
+                                        <rect key="frame" x="20" y="232" width="335" height="48"/>
+                                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="XNA-03-u0x"/>
+                                        </constraints>
+                                        <state key="normal" title="로그인">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="PEq-IG-saG" secondAttribute="bottom" constant="263" id="09A-Wi-aus"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ryq-f4-LJZ" secondAttribute="trailing" constant="20" id="3ec-cX-hG5"/>
+                                    <constraint firstAttribute="trailing" secondItem="wKs-Ux-uWV" secondAttribute="trailing" constant="20" id="ATs-uK-zgE"/>
+                                    <constraint firstAttribute="trailing" secondItem="PEq-IG-saG" secondAttribute="trailing" constant="20" id="ArT-4o-mww"/>
+                                    <constraint firstItem="PEq-IG-saG" firstAttribute="leading" secondItem="e9S-FS-YPM" secondAttribute="leading" constant="20" id="QEB-zz-YXf"/>
+                                    <constraint firstItem="PEq-IG-saG" firstAttribute="centerX" secondItem="e9S-FS-YPM" secondAttribute="centerX" id="SbY-dD-Xrz"/>
+                                    <constraint firstItem="Ryq-f4-LJZ" firstAttribute="leading" secondItem="e9S-FS-YPM" secondAttribute="leading" constant="20" id="mCY-yC-K4u"/>
+                                    <constraint firstItem="wKs-Ux-uWV" firstAttribute="top" secondItem="PEq-IG-saG" secondAttribute="bottom" constant="40" id="pQO-08-9aG"/>
+                                    <constraint firstItem="Ryq-f4-LJZ" firstAttribute="top" secondItem="wKs-Ux-uWV" secondAttribute="bottom" constant="70" id="s4V-3d-yr3"/>
+                                    <constraint firstItem="wKs-Ux-uWV" firstAttribute="leading" secondItem="e9S-FS-YPM" secondAttribute="leading" constant="20" id="wgD-Ng-gM5"/>
+                                    <constraint firstItem="PEq-IG-saG" firstAttribute="top" secondItem="e9S-FS-YPM" secondAttribute="top" constant="80" id="x3k-UX-jFT"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="e9S-FS-YPM" firstAttribute="top" secondItem="Pgw-GW-Wz5" secondAttribute="top" id="04j-Fm-zM2"/>
+                            <constraint firstItem="Pgw-GW-Wz5" firstAttribute="bottom" secondItem="e9S-FS-YPM" secondAttribute="bottom" id="AKB-Js-u34"/>
+                            <constraint firstItem="e9S-FS-YPM" firstAttribute="leading" secondItem="Pgw-GW-Wz5" secondAttribute="leading" id="glv-1U-V3d"/>
+                            <constraint firstItem="Pgw-GW-Wz5" firstAttribute="trailing" secondItem="e9S-FS-YPM" secondAttribute="trailing" id="gut-5V-wG9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Pgw-GW-Wz5"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yk5-5T-54b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2055" y="1678"/>
+        </scene>
+        <!--Pension Detail View Controller-->
+        <scene sceneID="DfD-xG-yDt">
+            <objects>
+                <viewController storyboardIdentifier="PensionDetailViewController" id="tEu-TB-yo1" customClass="PensionDetailViewController" customModule="yanolja" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eM6-4V-UTX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="giy-1O-98D">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopCell" id="reW-ih-egW" customClass="TopCell" customModule="yanolja" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="reW-ih-egW" id="mMf-fR-bHC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tEu-TB-yo1" id="r98-yo-vy1"/>
+                                    <outlet property="delegate" destination="tEu-TB-yo1" id="RAR-Me-jun"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="giy-1O-98D" firstAttribute="leading" secondItem="wUI-a5-Vy9" secondAttribute="leading" id="58a-dd-oC4"/>
+                            <constraint firstItem="giy-1O-98D" firstAttribute="top" secondItem="wUI-a5-Vy9" secondAttribute="top" id="aMf-HP-y89"/>
+                            <constraint firstItem="wUI-a5-Vy9" firstAttribute="bottom" secondItem="giy-1O-98D" secondAttribute="bottom" id="bxP-kX-zaV"/>
+                            <constraint firstItem="wUI-a5-Vy9" firstAttribute="trailing" secondItem="giy-1O-98D" secondAttribute="trailing" id="opu-67-9Zr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wUI-a5-Vy9"/>
+                    </view>
+                    <connections>
+                        <outlet property="DetailTableView" destination="giy-1O-98D" id="Hcg-gW-6g4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29G-q4-py9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3201" y="1756"/>
         </scene>
     </scenes>
     <resources>
