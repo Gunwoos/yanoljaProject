@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class HomeViewController: BaseViewController, HomeCellDelegate{
     
 
@@ -17,17 +18,26 @@ class HomeViewController: BaseViewController, HomeCellDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       print(self.m_appDelegate.m_userInfo.token) 
+        
         let nib = UINib.init(nibName: "MainTableViewCell", bundle: nil)
         self.pensionTableView.register(nib, forCellReuseIdentifier: "MainTableViewCell")
         setHomeTitle()
         fetchPensionAPI()
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+        refreshControl.tintColor = .blue
+        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        pensionTableView.refreshControl = refreshControl
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @objc func reloadData() {
+        if pensionTableView.refreshControl!.isRefreshing {
+            pensionTableView.refreshControl?.endRefreshing()
+        }
+        pensionTableView.reloadData()
     }
-
     
     
     func setHomeTitle(){
