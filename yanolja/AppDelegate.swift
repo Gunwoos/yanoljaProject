@@ -14,7 +14,8 @@ import Alamofire
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var m_userInfo : UserInfo = UserInfo()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -39,6 +40,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return handled
     } 
 
+    func setLoginType(_ type : Int) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(type, forKey: "type")
+    }
+    
+    func setUserId(_ userid : String) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(userid, forKey: "userid")
+    }
 
 }
 

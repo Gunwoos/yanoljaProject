@@ -24,6 +24,8 @@ typedef enum {
     EMAIL
 } LOGIN_TYPE;
 
+ 
+
 static const int TAB_NONE = 0;
 static const int TAB_HOME = 1;
 static const int TAB_ARROUND = 2;
@@ -34,12 +36,6 @@ static const int TAB_MORE = 5;
 // Test Mode
 static const BOOL IS_TEST = true;
 
-
-// 일반거리순 거리값 제한 (단위 m)
-static const double g_distance_waxingpanda = 30000.0;
-
-// 광고거리순 거리값 제한 (단위 Km)
-static const double g_distance_waxingpanda_ad = 3000.0;
 
 // Alarm
 static const int ALARM_ON = 1;
@@ -95,6 +91,7 @@ static NSString *const API_URL_HEADER = @"";
 
 static NSString *const RES_RESULT_CODE = @"resultcode";
 
-static NSString *const API_ACT_LOGIN = @"login.php";                // 로그인
+static NSString *const API_ACT_LOGIN = @"login.php";
+
 
 #endif /* Constants_h */

@@ -13,7 +13,14 @@
 		2A1EE99821240230001AAE90 /* DetailFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1EE99621240230001AAE90 /* DetailFooterTableViewCell.swift */; };
 		2A1EE99921240230001AAE90 /* DetailFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A1EE99721240230001AAE90 /* DetailFooterTableViewCell.xib */; };
 		2A26A1802117DC66001FE313 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A26A17F2117DC66001FE313 /* UIView+Toast.m */; };
-		2A2C1FB321255641006AA4DA /* PensionDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A2C1FB221255641006AA4DA /* PensionDetail.storyboard */; };
+		2A331579212A5D680035A43A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A331578212A5D680035A43A /* Constants.swift */; };
+		2A33157E212A5EE60035A43A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33157D212A5EE60035A43A /* User.swift */; };
+		2A331580212A61280035A43A /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33157F212A61280035A43A /* Manager.swift */; };
+		2A331584212A785B0035A43A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A331583212A785B0035A43A /* AuthService.swift */; };
+		2A331586212A78870035A43A /* ServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A331585212A78870035A43A /* ServiceResult.swift */; };
+		2A331588212A79460035A43A /* Data+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A331587212A79460035A43A /* Data+Decoder.swift */; };
+		2A33158C212A87980035A43A /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33158A212A87980035A43A /* MainTableViewCell.swift */; };
+		2A33158D212A87980035A43A /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A33158B212A87980035A43A /* MainTableViewCell.xib */; };
 		2AB0EE2A2114011600A3C4BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0EE292114011600A3C4BF /* AppDelegate.swift */; };
 		2AB0EE2F2114011600A3C4BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AB0EE2D2114011600A3C4BF /* Main.storyboard */; };
 		2AB0EE312114011800A3C4BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AB0EE302114011800A3C4BF /* Assets.xcassets */; };
@@ -49,14 +56,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A1C4D55211FCF4200D7E051 /* PensionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PensionDetailViewController.swift; path = yanolja/controller/PensionDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		2A1C4D55211FCF4200D7E051 /* PensionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PensionDetailViewController.swift; path = yanolja/Controller/Main/PensionDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		2A1C4D65211FFE4900D7E051 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		2A1C4D66211FFE4900D7E051 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		2A1EE99621240230001AAE90 /* DetailFooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFooterTableViewCell.swift; sourceTree = "<group>"; };
 		2A1EE99721240230001AAE90 /* DetailFooterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailFooterTableViewCell.xib; sourceTree = "<group>"; };
 		2A26A17E2117DC66001FE313 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		2A26A17F2117DC66001FE313 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
-		2A2C1FB221255641006AA4DA /* PensionDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PensionDetail.storyboard; sourceTree = "<group>"; };
+		2A331578212A5D680035A43A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2A33157D212A5EE60035A43A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = yanolja/model/User.swift; sourceTree = SOURCE_ROOT; };
+		2A33157F212A61280035A43A /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		2A331583212A785B0035A43A /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		2A331585212A78870035A43A /* ServiceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceResult.swift; sourceTree = "<group>"; };
+		2A331587212A79460035A43A /* Data+Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Decoder.swift"; sourceTree = "<group>"; };
+		2A33158A212A87980035A43A /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTableViewCell.swift; path = yanolja/controller/Main/MainTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		2A33158B212A87980035A43A /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainTableViewCell.xib; path = yanolja/controller/Main/MainTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		2AB0EE262114011600A3C4BF /* yanolja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yanolja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB0EE292114011600A3C4BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AB0EE2E2114011600A3C4BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +142,28 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		2A331582212A78490035A43A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2A331583212A785B0035A43A /* AuthService.swift */,
+				2A331585212A78870035A43A /* ServiceResult.swift */,
+			);
+			name = Service;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		2A331589212A87690035A43A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2AB0EE672114041700A3C4BF /* Detail */,
+				2AB0EE582114036700A3C4BF /* HomeViewController.swift */,
+				2A1C4D55211FCF4200D7E051 /* PensionDetailViewController.swift */,
+				2A33158A212A87980035A43A /* MainTableViewCell.swift */,
+				2A33158B212A87980035A43A /* MainTableViewCell.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		2AB0EE1D2114011600A3C4BF = {
 			isa = PBXGroup;
 			children = (
@@ -149,12 +185,13 @@
 		2AB0EE282114011600A3C4BF /* yanolja */ = {
 			isa = PBXGroup;
 			children = (
-				2A26A17C2117DC4C001FE313 /* Library */,
-				2AB0EE8021143EA200A3C4BF /* Uitility */,
+				2AB0EE292114011600A3C4BF /* AppDelegate.swift */,
 				2AB0EE412114018B00A3C4BF /* HomeTableViewCell.swift */,
 				C4FCBC572126C3A2008803E8 /* PensionData.swift */,
 				C4DEE553211D287A00DEFC8A /* SearchViewCell.swift */,
-				2AB0EE292114011600A3C4BF /* AppDelegate.swift */,
+				2A331582212A78490035A43A /* Service */,
+				2A26A17C2117DC4C001FE313 /* Library */,
+				2AB0EE8021143EA200A3C4BF /* Uitility */,
 				2AB0EE492114024700A3C4BF /* Extension */,
 				2AB0EE3E2114013400A3C4BF /* Storyboard */,
 				2AB0EE3D2114012E00A3C4BF /* Model */,
@@ -180,16 +217,14 @@
 		2AB0EE3C2114012900A3C4BF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2A331589212A87690035A43A /* Main */,
 				2AB0EE8221143F0000A3C4BF /* BaseViewController.swift */,
-				2AB0EE672114041700A3C4BF /* Detail */,
 				2AB0EE5C2114038900A3C4BF /* User */,
 				2AB0EE502114030700A3C4BF /* SettingViewController.swift */,
 				2AB0EE522114031F00A3C4BF /* CheckBookingViewController.swift */,
 				2AB0EE542114033300A3C4BF /* LocationViewController.swift */,
-				2AB0EE582114036700A3C4BF /* HomeViewController.swift */,
 				C4DEE557211D28AB00DEFC8A /* SearchViewController.swift */,
 				2AB0EE5A2114037D00A3C4BF /* SearchEmtpyRoomViewController.swift */,
-				2A1C4D55211FCF4200D7E051 /* PensionDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -201,6 +236,7 @@
 				2AB0EE45211401B300A3C4BF /* Shopinfo.swift */,
 				2AB0EE47211401BD00A3C4BF /* Boardinfo.swift */,
 				2AB0EE6C211404E200A3C4BF /* Page.swift */,
+				2A33157D212A5EE60035A43A /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,7 +247,6 @@
 				2AB0EE2D2114011600A3C4BF /* Main.storyboard */,
 				2AB0EE322114011800A3C4BF /* LaunchScreen.storyboard */,
 				2AB0EE3F2114015700A3C4BF /* Login.storyboard */,
-				2A2C1FB221255641006AA4DA /* PensionDetail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -252,6 +287,9 @@
 			isa = PBXGroup;
 			children = (
 				2AB0EE8121143EAE00A3C4BF /* Constants.h */,
+				2A331578212A5D680035A43A /* Constants.swift */,
+				2A33157F212A61280035A43A /* Manager.swift */,
+				2A331587212A79460035A43A /* Data+Decoder.swift */,
 			);
 			path = Uitility;
 			sourceTree = "<group>";
@@ -342,7 +380,7 @@
 				2AB0EE312114011800A3C4BF /* Assets.xcassets in Resources */,
 				2A1C4D68211FFE4900D7E051 /* DetailTableViewCell.xib in Resources */,
 				2AB0EE2F2114011600A3C4BF /* Main.storyboard in Resources */,
-				2A2C1FB321255641006AA4DA /* PensionDetail.storyboard in Resources */,
+				2A33158D212A87980035A43A /* MainTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,10 +448,15 @@
 			files = (
 				2AB0EE48211401BD00A3C4BF /* Boardinfo.swift in Sources */,
 				2AB0EE4D211402CB00A3C4BF /* TextFieldStyle.swift in Sources */,
+				2A331586212A78870035A43A /* ServiceResult.swift in Sources */,
+				2A331588212A79460035A43A /* Data+Decoder.swift in Sources */,
 				C4DEE554211D287A00DEFC8A /* SearchViewCell.swift in Sources */,
+				2A33157E212A5EE60035A43A /* User.swift in Sources */,
 				2AB0EE4B2114025B00A3C4BF /* extension.swift in Sources */,
 				2A26A1802117DC66001FE313 /* UIView+Toast.m in Sources */,
+				2A331579212A5D680035A43A /* Constants.swift in Sources */,
 				2AB0EE8321143F0000A3C4BF /* BaseViewController.swift in Sources */,
+				2A33158C212A87980035A43A /* MainTableViewCell.swift in Sources */,
 				2AB0EE60211403B500A3C4BF /* SplashViewController.swift in Sources */,
 				2AB0EE64211403DF00A3C4BF /* LoginViewController.swift in Sources */,
 				C4FCBC582126C3A2008803E8 /* PensionData.swift in Sources */,
@@ -424,6 +467,7 @@
 				2AB0EE44211401AB00A3C4BF /* Global.swift in Sources */,
 				2AB0EE62211403CF00A3C4BF /* SingupDetailViewController.swift in Sources */,
 				2AB0EE592114036700A3C4BF /* HomeViewController.swift in Sources */,
+				2A331580212A61280035A43A /* Manager.swift in Sources */,
 				2AB0EE5B2114037D00A3C4BF /* SearchEmtpyRoomViewController.swift in Sources */,
 				2AB0EE532114031F00A3C4BF /* CheckBookingViewController.swift in Sources */,
 				2AB0EE422114018B00A3C4BF /* HomeTableViewCell.swift in Sources */,
@@ -432,6 +476,7 @@
 				2AB0EE512114030700A3C4BF /* SettingViewController.swift in Sources */,
 				2AB0EE5E211403A000A3C4BF /* SignupViewController.swift in Sources */,
 				2AB0EE722114061F00A3C4BF /* yanolja_bridge.m in Sources */,
+				2A331584212A785B0035A43A /* AuthService.swift in Sources */,
 				C4DEE558211D28AC00DEFC8A /* SearchViewController.swift in Sources */,
 				2AB0EE4F211402E200A3C4BF /* ButtonStyle.swift in Sources */,
 				2AB0EE46211401B300A3C4BF /* Shopinfo.swift in Sources */,

@@ -218,8 +218,8 @@ class BaseViewController: UIViewController {
         
         let style = CSToastStyle.init(defaultStyle: ())
         style?.cornerRadius = 10
-        style?.verticalPadding = 5
-        //style?.displayWrap = false 
+        style?.verticalPadding = 15
+       // style?.displayWrap = false
         
         view.makeToast(strMsg, duration: 1.0, position: CSToastPositionCenter, style: style)
         
@@ -241,6 +241,8 @@ class BaseViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
+    
+    
 }
 
 

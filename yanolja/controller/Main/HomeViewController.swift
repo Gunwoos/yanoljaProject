@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, HomeCellDelegate{
+class HomeViewController: BaseViewController, HomeCellDelegate{
     
 
     @IBOutlet weak var pensionTableView: UITableView!
@@ -17,7 +17,8 @@ class HomeViewController: UIViewController, HomeCellDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let nib = UINib.init(nibName: "MainTableViewCell", bundle: nil)
+        self.pensionTableView.register(nib, forCellReuseIdentifier: "MainTableViewCell")
         setHomeTitle()
         fetchPensionAPI()
     }
@@ -126,28 +127,52 @@ class HomeViewController: UIViewController, HomeCellDelegate{
     }
 }
 
+// MARK :- UITableViewDelegate
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt")
+        
+        
+        let row = indexPath.row
+        print("Row: \(row)")
+        
+        self.pushVC("PensionDetailViewController", storyboard: "Main", animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        tableView.rowHeight = 280
+    }
+}
+
+// MARK :- UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowNum
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! HomeTableViewCell
- 
-
+        // MainTableViewCell 셀 변경
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
+        tableView.rowHeight = 280
+        var nprice = 0
+        var dprice = 0
+        nprice = pensionData[indexPath.row].pensionLowestPrice / 100 * pensionData[indexPath.row].pensionDiscountRate
+        dprice = pensionData[indexPath.row].pensionLowestPrice  + nprice
         
         let url = URL(string: pensionData[indexPath.row].pensionImage)!
         if let data = try? Data(contentsOf: url){
-            cell.pensionImage.image = UIImage(data: data)
+            cell.ImageView.image = UIImage(data: data)
         }
         else{
-            cell.pensionImage.image = UIImage(named: "bg02")
+            cell.ImageView.image = UIImage(named: "bg02")
         }
  
-        cell.pensionImage.contentMode = .scaleToFill
-        cell.pensionName.text = pensionData[indexPath.row].pensionName
-        cell.pensionTag.text = "simple Tag"
-        cell.pensionPrice.text = String(pensionData[indexPath.row].pensionLowestPrice)
+        cell.ImageView.contentMode = .scaleToFill
+        cell.TitleLabel.text = pensionData[indexPath.row].pensionName
+        cell.DiscountLabel.text = "\(pensionData[indexPath.row].pensionDiscountRate) %"
+        cell.PriceLabel.text = "\(Global().getFormattedPrice(pensionData[indexPath.row].pensionLowestPrice)!)원~"
+        
+        cell.nPriceLabel.text = "\(Global().getFormattedPrice(dprice)!)원"
         
         return cell
     }

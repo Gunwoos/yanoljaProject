@@ -12,7 +12,7 @@ class CheckBookingViewController: UIViewController {
 
     @IBOutlet weak var FirstView: UIView!
     @IBOutlet weak var SecondView: UIView!
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
