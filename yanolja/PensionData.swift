@@ -130,7 +130,7 @@ struct PensionList{
     let pensionLongitude: Double
     let pensionSubLocation: String
 }
-
+ 
 
 let urlString = "https://www.pmb.kr/location/location-name/"
 var pensionLocationData = Array<PensionLocationData>()
