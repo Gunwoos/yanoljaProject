@@ -44,7 +44,8 @@ class HomeViewController: UIViewController, HomeCellDelegate{
         //self.navigationItem.titleView = label
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
-    
+
+     // MARK: - 펜션 정보 파싱 함수
     func fetchPensionAPI(){
         let url = URL(string: urlString)!
         
@@ -53,20 +54,17 @@ class HomeViewController: UIViewController, HomeCellDelegate{
             guard 200..<400 ~= response.statusCode else {return}
             do{
                 let pensionLocationParsingData = try JSONDecoder().decode([PensionLocationParsingData].self, from: data)
-                var pension = Array<PensionLocationData.pensionSubLocation>()
                 
                 for i in 0...pensionLocationParsingData.count-1{
-                    print("\(pensionLocationParsingData[i].name), \(pensionLocationParsingData[i].pensionOfNum)")
+                    var pension = Array<PensionLocationData.pensionSubLocation>()
                     
                     for j in 0...pensionLocationParsingData[i].sublocations.count-1{
-                        
                         let pensionSub = PensionLocationData.pensionSubLocation.init(
                             name: pensionLocationParsingData[i].sublocations[j].name,
                             pensionOfNum: pensionLocationParsingData[i].sublocations[j].pensionOfNum,
                             sublocationNum: pensionLocationParsingData[i].sublocations[j].sublocationNum
                         )
                         pension.append(pensionSub)
-                        
                     }
                     let pensionLocation = PensionLocationData.init(
                         name: pensionLocationParsingData[i].name,
@@ -74,55 +72,59 @@ class HomeViewController: UIViewController, HomeCellDelegate{
                         sublocations: pension
                     )
                     pensionLocationData.append(pensionLocation)
-                    
-                    let pensionUrlString = "https://www.pmb.kr/location/"
-                    
-                    for i in 0...pensionLocationData.count-1{
-                        for j in 0...pensionLocationData[i].sublocations.count-1{
-                            let pensionSubLocationNum = pensionUrlString +  pensionLocationData[i].sublocations[j].sublocationNum + "/"
-                            let pensionURL = URL(string: pensionSubLocationNum)!
-                            
-                            let pensionDataTask = URLSession.shared.dataTask(with: pensionURL) { (data, response, error) in
-                                guard let response = response as? HTTPURLResponse, let data = data else { return }
-                                guard 200..<400 ~= response.statusCode else {return}
-                                do{
-                                    print("start input data")
-                                    let pensionList = try JSONDecoder().decode([PensionData].self, from: data)
-                                    for k in 0...pensionList.count-1{
-                                        let Pension = PensionList.init(
-                                            pensionPk: pensionList[k].pensionPk,
-                                            pensionName: pensionList[k].pensionName,
-                                            pensionImage: pensionList[k].pensionImage,
-                                            pensionLowestPrice: pensionList[k].pensionLowestPrice,
-                                            pensionDiscountRate: pensionList[k].pensionDiscountRate,
-                                            pensionLatitude: pensionList[k].pensionLatitude,
-                                            pensionLongitude: pensionList[k].pensionLongitude,
-                                            pensionSubLocation: pensionLocationData[i].sublocations[j].sublocationNum
-                                        )
-                                        pensionData.append(Pension)
-                                        self.rowNum = self.rowNum + 1
-                                    }
-        
-                                    DispatchQueue.global().async {
-                                        DispatchQueue.main.async {
-                                            self.pensionTableView.reloadData()
-                                        }
-                                    }
-                                } catch {
-                                    print("error : \(error.localizedDescription)")
-                                }
-                            }
-                            pensionDataTask.resume()
-                        }
-                    }
+                    pensionNum = pensionNum + pensionLocation.pensionOfNum
                 }
+                self.fetchPensionDataAPI()
             } catch {
                 print("error : \(error.localizedDescription)")
             }
         }
         dataTask.resume()
     }
-
+    
+     // MARK: - 모든 펜션의 기본 정보를 pensionData 에 저장
+    func fetchPensionDataAPI(){
+        for i in 0...pensionLocationData.count - 1{
+            for j in 0...pensionLocationData[i].sublocations.count - 1{
+                let pensionSubLocationNum = pensionUrlString +  pensionLocationData[i].sublocations[j].sublocationNum + "/"
+                let pensionURL = URL(string: pensionSubLocationNum)!
+                
+                let pensionDataTask = URLSession.shared.dataTask(with: pensionURL) { (data, response, error) in
+                    guard let response = response as? HTTPURLResponse, let data = data else { return }
+                    guard 200..<400 ~= response.statusCode else {return}
+                    do{
+                        print("start input data")
+                        let pensionList = try JSONDecoder().decode([PensionData].self, from: data)
+                        
+                        for k in 0...pensionList.count-1{
+                            let Pension = PensionList.init(
+                                pensionPk: pensionList[k].pensionPk,
+                                pensionName: pensionList[k].pensionName,
+                                pensionImage: pensionList[k].pensionImage,
+                                pensionLowestPrice: pensionList[k].pensionLowestPrice,
+                                pensionDiscountRate: pensionList[k].pensionDiscountRate,
+                                pensionLatitude: pensionList[k].pensionLatitude,
+                                pensionLongitude: pensionList[k].pensionLongitude,
+                                pensionSubLocation: pensionLocationData[i].sublocations[j].sublocationNum
+                            )
+                            
+                            pensionData.append(Pension)
+                        }
+                        DispatchQueue.global().async {
+                            DispatchQueue.main.async {
+                                self.pensionTableView.reloadData()
+                            }
+                        }
+                    } catch {
+                        print("error : \(error.localizedDescription)")
+                    }
+                }
+                pensionDataTask.resume()
+            }
+        }
+        
+    }
+        
     @IBAction func SearchFaveriteRoomButtonAction(_ sender: UIBarButtonItem) {
     }
     @IBAction func SearchRoomButtonAction(_ sender: UIBarButtonItem) {
@@ -131,7 +133,7 @@ class HomeViewController: UIViewController, HomeCellDelegate{
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowNum
+        return pensionNum
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

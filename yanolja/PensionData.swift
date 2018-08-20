@@ -8,6 +8,7 @@
 
 import UIKit
 
+ // MARK: - https://www.pmb.kr/location/location-name/ 의 파싱 구조체
 struct PensionLocationParsingData: Decodable{
     let name: String
     let pensionOfNum: Int
@@ -45,6 +46,7 @@ struct PensionLocationParsingData: Decodable{
     }
 }
 
+// MARK: - https://www.pmb.kr/location/location-name/ 의 파싱 한 데이터를 저장할 구조체
 struct PensionLocationData {
     var name: String
     var pensionOfNum: Int
@@ -57,6 +59,7 @@ struct PensionLocationData {
     }
 }
 
+// MARK: - 각 지역별 펜션의 정보를 파싱할 구조체
 struct PensionData: Decodable{
     let pensionPk: Int
     let pensionName: String
@@ -87,6 +90,7 @@ struct PensionData: Decodable{
     }
 }
 
+// MARK: - 각 지역별 펜션의 정보를 데이터를 저장할 구조체
 struct PensionList{
     let pensionPk: Int
     let pensionName: String
@@ -98,6 +102,7 @@ struct PensionList{
     let pensionSubLocation: String
 }
 
+// MARK: - 펜션 세부 정보 데이터를 파싱할 구조체
 struct PensionDetailParsing: Decodable {
     let pk: Int
     let pensionName: String
@@ -111,13 +116,13 @@ struct PensionDetailParsing: Decodable {
     let pensionCheckOutTime: String
     let pensionPickUp: String
     let pensionRoomNumber: Int
-    let pensionInfo: String
+    let pensionInfo: String?
     let pensionTheme: String
     let pensionCheckInOutDetail: String
     let pensionPickUpDetail:String
     let pensionGretting: String
     let pensionPrecations: String
-    let pensionImages: Array<String>
+    let pensionImages: Array<Dictionary< String,String >>
     let pensionRoom: Array<pensionRoomDetail>
     
     enum CodingKeys: String, CodingKey {
@@ -138,9 +143,9 @@ struct PensionDetailParsing: Decodable {
         case pensionCheckInOutDetail = "check_in_out_detail"
         case pensionPickUpDetail = "pickup_detail"
         case pensionGretting = "gretting"
-        case pensionPrecations = "precations"
+        case pensionPrecations = "precautions"
         case pensionImages = "pensionimages"
-        case pensionRoom = "room"
+        case pensionRoom = "rooms"
     }
     
     struct pensionRoomDetail: Decodable{
@@ -152,18 +157,19 @@ struct PensionDetailParsing: Decodable {
         let roomPrice: Int
         let roomStructure: String
         let roomEquipments: String
-        let roomInfo: String
+        let roomImages: Array<Dictionary<String,String>>
+        
         
         enum CodingKeys: String, CodingKey{
             case roomPk = "pk"
             case roomName = "name"
             case roomSize = "size"
-            case roomNormalNumPeople = "normal_num_people"
+            case roomNormalNumPeople = "normal_num_poeple"
             case roomMaxNumPeople = "max_num_people"
             case roomPrice = "price"
             case roomStructure = "structure"
             case roomEquipments = "equipments"
-            case roomInfo = "info"
+            case roomImages = "roomimages"
         }
         init(from decoder: Decoder) throws{
             let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -175,7 +181,7 @@ struct PensionDetailParsing: Decodable {
             roomPrice = try values.decode(Int.self, forKey: .roomPrice)
             roomStructure = try values.decode(String.self, forKey: .roomStructure)
             roomEquipments = try values.decode(String.self, forKey: .roomEquipments)
-            roomInfo = try values.decode(String.self, forKey: .roomInfo)
+            roomImages = try values.decode(Array<Dictionary<String,String>>.self, forKey: .roomImages)
         }
     }
     init(from decoder: Decoder) throws{
@@ -198,11 +204,12 @@ struct PensionDetailParsing: Decodable {
         pensionPickUpDetail = try values.decode(String.self, forKey: .pensionPickUpDetail)
         pensionGretting = try values.decode(String.self, forKey: .pensionGretting)
         pensionPrecations = try values.decode(String.self, forKey: .pensionPrecations)
-        pensionImages = try values.decode(Array<String>.self, forKey: .pensionImages)
+        pensionImages = try values.decode(Array<Dictionary<String,String>>.self, forKey: .pensionImages)
         pensionRoom = try values.decode(Array<pensionRoomDetail>.self, forKey: .pensionRoom)
     }
 }
 
+// MARK: - 펜션 세부 정보를 저장할 구조체
 struct pensionDetailData {
     let pk: Int
     let pensionName: String
@@ -216,14 +223,14 @@ struct pensionDetailData {
     let pensionCheckOutTime: String
     let pensionPickUp: String
     let pensionRoomNumber: Int
-    let pensionInfo: String
+    let pensionInfo: String?
     let pensionTheme: String
     let pensionCheckInOutDetail: String
     let pensionPickUpDetail:String
     let pensionGretting: String
     let pensionPrecations: String
-    let pensionImages: Array<String>
-    let pensionRoom: Array<pensionRoomDetail>
+    let pensionImages: Array<Dictionary<String,String>>
+    let pensionRoom: Array<pensionDetailData.pensionRoomDetail>
     
     struct pensionRoomDetail{
         let roomPk: Int
@@ -234,16 +241,84 @@ struct pensionDetailData {
         let roomPrice: Int
         let roomStructure: String
         let roomEquipments: String
-        let roomInfo: String
+        let roomImages: Array<Dictionary<String,String>>
+    }
 }
  
 
 let urlString = "https://www.pmb.kr/location/location-name/"
+let pensionUrlString = "https://www.pmb.kr/location/"
+var pensionNum = 0
 var pensionLocationData = Array<PensionLocationData>()
 var pensionData = Array<PensionList>()
+var pensionDetailDataArray = Array<pensionDetailData>()
 
-
-
+// MARK: - 펜션의 상세 정보를 불러오는 함수
+func fetchPensionDetail(subLocation: String, pk: Int){
+    if pensionData.count == pensionNum{
+        let pensionDetailURLString = pensionUrlString + subLocation + "/" + String(pk) + "/"
+        let pensionDetailURL = URL(string: pensionDetailURLString)!
+        
+        let pensionDetailDataTask = URLSession.shared.dataTask(with: pensionDetailURL){ (data, response, error ) in
+            guard let response = response as? HTTPURLResponse, let data = data else{
+                print("error : response, data error")
+                return
+            }
+            guard 200..<400 ~= response.statusCode else {
+                print("sever error : \(pensionDetailURLString) ")
+                return
+            }
+            do{
+                let pensionDetail = try JSONDecoder().decode(PensionDetailParsing.self, from: data)
+                var pensionRoomListData = Array<pensionDetailData.pensionRoomDetail>()
+                
+                for i in 0...pensionDetail.pensionRoom.count-1{
+                    let pensionRoomData = pensionDetailData.pensionRoomDetail.init(
+                        roomPk: pensionDetail.pensionRoom[i].roomPk,
+                        roomName: pensionDetail.pensionRoom[i].roomName,
+                        roomSize: pensionDetail.pensionRoom[i].roomSize,
+                        roomNormalNumPeople: pensionDetail.pensionRoom[i].roomNormalNumPeople,
+                        roomMaxNumPeople: pensionDetail.pensionRoom[i].roomMaxNumPeople,
+                        roomPrice: pensionDetail.pensionRoom[i].roomPrice,
+                        roomStructure: pensionDetail.pensionRoom[i].roomStructure,
+                        roomEquipments: pensionDetail.pensionRoom[i].roomEquipments,
+                        roomImages: pensionDetail.pensionRoom[i].roomImages
+                    )
+                    pensionRoomListData.append(pensionRoomData)
+                }
+                
+                let pension = pensionDetailData.init(
+                    pk: pensionDetail.pk,
+                    pensionName: pensionDetail.pensionName,
+                    pensionImage: pensionDetail.pensionImage,
+                    pensionPrice: pensionDetail.pensionPrice,
+                    pensionDiscountRate: pensionDetail.pensionDiscountRate,
+                    pensionLatitude: pensionDetail.pensionLatitude,
+                    pensionLongitude: pensionDetail.pensionLongitude,
+                    pensionAddress:  pensionDetail.pensionAddress,
+                    pensionCheckInTime: pensionDetail.pensionCheckInTime,
+                    pensionCheckOutTime: pensionDetail.pensionCheckOutTime,
+                    pensionPickUp: pensionDetail.pensionPickUp,
+                    pensionRoomNumber: pensionDetail.pensionRoomNumber,
+                    pensionInfo: pensionDetail.pensionInfo,
+                    pensionTheme: pensionDetail.pensionTheme,
+                    pensionCheckInOutDetail: pensionDetail.pensionCheckInOutDetail,
+                    pensionPickUpDetail: pensionDetail.pensionPickUpDetail,
+                    pensionGretting: pensionDetail.pensionGretting,
+                    pensionPrecations: pensionDetail.pensionPrecations,
+                    pensionImages: pensionDetail.pensionImages,
+                    pensionRoom: pensionRoomListData
+                )
+                pensionDetailDataArray.append(pension)
+                
+            } catch {
+                print("error : \(error.localizedDescription)")
+                print("error url : \(pensionDetailURLString)")
+            }
+        }
+        pensionDetailDataTask.resume()
+    }
+}
 
 
 
