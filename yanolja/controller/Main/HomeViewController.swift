@@ -15,12 +15,13 @@ class HomeViewController: BaseViewController, HomeCellDelegate{
     @IBOutlet weak var pensionTableView: UITableView!
     var rowNum = 0
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       print(self.m_appDelegate.m_userInfo.token) 
-        
+         let token = UserDefaults.standard.string(forKey : "token") ?? ""
+        print("\n ----------- [token: \(token)] ----------- \n")
         let nib = UINib.init(nibName: "MainTableViewCell", bundle: nil)
         self.pensionTableView.register(nib, forCellReuseIdentifier: "MainTableViewCell")
         setHomeTitle()
@@ -85,7 +86,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate{
                     )
                     pensionLocationData.append(pensionLocation)
                     
-                    let pensionUrlString = "https://www.pmb.kr/location/"
+                    let pensionUrlString = "\(API.baseURL)location/"
                     
                     for i in 0...pensionLocationData.count-1{
                         for j in 0...pensionLocationData[i].sublocations.count-1{

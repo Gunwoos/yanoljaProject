@@ -8,22 +8,34 @@
 
 import UIKit
 
-class CheckBookingViewController: UIViewController {
+class CheckBookingViewController: BaseViewController {
 
     @IBOutlet weak var FirstView: UIView!
     @IBOutlet weak var SecondView: UIView!
+    @IBOutlet weak var TitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        
+        TitleLabel.isUserInteractionEnabled = true
+        TitleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(signInDidTap)))
+    }
+    @objc private func signInDidTap(){
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationItem.title = " "
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.FirstView.alpha = 0.0
         self.SecondView.alpha = 1
+        
+        self.navigationItem.title = "예약조회"
+
     }
     
     @IBAction func ShowControllDidTap(_ sender: UISegmentedControl) {

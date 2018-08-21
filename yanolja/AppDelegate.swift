@@ -18,12 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        NavigationBarSetting()
+
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
-    
+    // 네비게이션 바 색상 기본설정
+    private func NavigationBarSetting(){
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = UIColor.black
+        navigationBarAppearace.barTintColor = UIColor.white
+        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        
+    }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
         let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
@@ -45,11 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userDefaults.setValue(type, forKey: "type")
     }
     
-    func setUserId(_ userid : String) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.setValue(userid, forKey: "userid")
-    }
-    
+    // 로그인후 토큰사용하기 위해
     func setUserToken(_ token : String) {
         let userDefaults = UserDefaults.standard
         userDefaults.setValue(token, forKey: "token")

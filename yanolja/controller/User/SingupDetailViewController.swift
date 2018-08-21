@@ -7,7 +7,7 @@
 //
 
 import UIKit
- 
+import Alamofire
 
 class SingupDetailViewController: BaseViewController {
 
@@ -72,7 +72,42 @@ class SingupDetailViewController: BaseViewController {
     }
     
     func check_duplicate(){
-        print("check_duplicate")
+        guard let username = username.text,
+            let password = userpwd.text ,
+            let phone = userphone.text
+            else { return }
+        
+        let params: Parameters = [
+            "username": username,
+            "password": password,
+            "password2" : password,
+            "phone_number" : phone
+        ]
+        
+        
+        let signUpURL = API.Auth.signUp
+        Alamofire
+            .request(signUpURL, method: .post, parameters: params)
+            .validate(statusCode: 200..<400)
+            .responseData { [weak self] (response) in
+                switch response.result {
+                case .success(let value):
+                    print("successed : ",value)
+                     let alertVC = UIAlertController(title: "회원가입", message: "정상적으로 회원가입 되었습니다.", preferredStyle:.alert)
+                    let okAction = UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
+                          self?.dismiss(animated: true, completion: nil)
+                    })
+                    alertVC.addAction(okAction)
+                    self?.present(alertVC, animated: true, completion: nil)
+ 
+                    //메인페이지로 이동
+                    //self?.pushVC("HomeViewController", storyboard: "Main", animated: true)
+                case .failure(let error):
+                    print(error)
+                    self?.showToast("일시적인 오류")
+                    return
+                }
+        }
         
     }
     override func viewDidLoad() {
@@ -95,6 +130,7 @@ class SingupDetailViewController: BaseViewController {
         removeObservers()
     }
     
+    // didTapView
     @objc func didTapView(gusture: UITapGestureRecognizer){
         //This should hide keyboard for the view
         view.endEditing(true)
@@ -109,7 +145,7 @@ class SingupDetailViewController: BaseViewController {
             self.keyboardWillHide(notification: notification)
         }
     }
-    
+    // keyboardWillShow
     func keyboardWillShow(notification: Notification){
         guard let userInfo = notification.userInfo , let frame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
@@ -118,11 +154,11 @@ class SingupDetailViewController: BaseViewController {
         let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height, right: 0)
         scrollview.contentInset = contentInset
     }
-    
+    //keyboardWillHide
     func keyboardWillHide(notification: Notification){
         scrollview.contentInset = UIEdgeInsets.zero
     }
-    
+    //removeObservers
     func removeObservers(){
         NotificationCenter.default.removeObserver(self)
     }
@@ -133,10 +169,6 @@ extension SingupDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
-        
-        if(textField.isEqual(self.username)){ //username에서 리턴키를 눌렀다면
-            self.userpwd.becomeFirstResponder()//컨텐츠필드로 포커스 이동
-        }
         return true
     }
     

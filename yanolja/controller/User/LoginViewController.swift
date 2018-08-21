@@ -31,33 +31,25 @@ final class LoginViewController: BaseViewController {
             "username": username,
             "password": password
         ]
-        let url = API.Auth.signIn
-        Alamofire.request(url , method: .post , parameters: params )
-            .validate()
-            .response { (response) in
-                
-                if let data = response.data {
-                    do {
-                        let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
-                        
-                        if let token = jsonData["token"] as? String {
-                            self.m_appDelegate.m_userInfo.isLogin = true
-
-                            // 레퍼런스저장
-                            self.m_appDelegate.setUserToken(token)
-
-                            // 메인페이지로 이동
-                            self.pushVC("HomeViewController", storyboard: "Main", animated: true)
-                        }
-                        
-                    } catch {
-                        print("Error: ", error)
-                    }
-                    
+       // let url = API.Auth.signIn
+        let signInURL = API.Auth.signIn
+ 
+         
+        Alamofire
+            .request(signInURL, method: .post, parameters: params)
+            .validate(statusCode: 200..<400)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let value):
+                    print("successed : ",value)
+                    let get = try! JSONDecoder().decode(GetUserInfo.self, from: value)
+                    self.m_appDelegate.setUserToken(get.token)
+                    //메인페이지로 이동 
+                    self.pushVC("HomeViewController", storyboard: "Main", animated: true)
+                case .failure(let error):
+                    print(error)
                 }
         }
-        
- 
     }
     
     
@@ -65,7 +57,6 @@ final class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.title = "로그인"
         self.username.delegate = self
         self.userpwd.delegate = self
         
@@ -76,19 +67,33 @@ final class LoginViewController: BaseViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapView(gusture:)))
         view.addGestureRecognizer(tapGesture)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         self.username.becomeFirstResponder()
     }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        // needed to clear the text in the back navigation:
+        self.navigationItem.title = " "
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationItem.title = "로그인"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
         addObservers()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
         removeObservers()
     }
+    
     
     @objc func didTapView(gusture: UITapGestureRecognizer){
         //This should hide keyboard for the view
@@ -159,11 +164,7 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
-        
-        if(textField.isEqual(self.username)){ //username에서 리턴키를 눌렀다면
-            self.userpwd.becomeFirstResponder()//컨텐츠필드로 포커스 이동
-        }
-        return true
+         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
