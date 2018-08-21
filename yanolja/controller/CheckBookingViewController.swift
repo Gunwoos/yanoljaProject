@@ -20,9 +20,10 @@ class CheckBookingViewController: UIViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.FirstView.alpha = 0.0
+        self.SecondView.alpha = 1
     }
     
     @IBAction func ShowControllDidTap(_ sender: UISegmentedControl) {
