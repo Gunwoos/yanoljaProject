@@ -112,7 +112,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQN-Zi-eGX" customClass="FBSDKLoginButton">
-                                        <rect key="frame" x="20" y="437" width="335" height="30"/>
+                                        <rect key="frame" x="20" y="437" width="335" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="KYx-Of-kDn"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>

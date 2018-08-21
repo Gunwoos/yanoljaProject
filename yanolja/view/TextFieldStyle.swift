@@ -11,16 +11,16 @@ import UIKit
 @IBDesignable
 final class TextFieldStyle: UITextField {
     
-    @IBInspectable var leftImage: UIImage? {
-        get { return (leftView as? UIImageView)?.image }
-        set {
-            let image = newValue?.withRenderingMode(.alwaysTemplate)
-            let leftImageView = UIImageView(image: image)
-            leftImageView.tintColor = .blue
-            leftView = leftImageView
-            leftViewMode = .always
-        }
-    }
+//    @IBInspectable var leftImage: UIImage? {
+//        get { return (leftView as? UIImageView)?.image }
+//        set {
+//            let image = newValue?.withRenderingMode(.alwaysTemplate)
+//            let leftImageView = UIImageView(image: image)
+//            leftImageView.tintColor = .blue
+//            leftView = leftImageView
+//            leftViewMode = .always
+//        }
+//    }
     
     var borderLayer: CALayer?
     @IBInspectable var underlineWidth: CGFloat {

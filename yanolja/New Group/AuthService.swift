@@ -7,49 +7,63 @@
 //
 
 import Alamofire
-//
-//protocol AuthServiceType {
-//    func signIn(username: String, password: String, completion: @escaping (Result<User>) -> ())
-//   // func signUp(username: String, password: String, completion: @escaping (Result<User>) -> ())
-//}
-//
-//struct AuthService: AuthServiceType {
-//    func signIn(username: String, password: String, completion: @escaping (Result<User>) -> ()) {
-//        
-//        print("\n ----------- [signIn] ----------- \n")
-//        requestService(url: API.Auth.signIn, username: username, password: password, completion: completion)
-//    }
-//    
-////    func signUp(username: String, password: String, completion: @escaping (Result<User>) -> ()) {
-////        print("\n ----------- [signUp] ----------- \n")
-////        requestService(url: API.Auth.signUp, username: username, password: password, completion: completion)
-////    }
-//    
-//    func requestService(url: String, username: String, password: String, completion: @escaping (Result<User>) -> ()) {
-//        guard !username.isEmpty else { return completion(.error(AuthError.invalidUsername)) }
-//        guard !password.isEmpty else { return completion(.error(AuthError.invalidPassword)) }
-//        
-//        let params: Parameters = [
-//            "username": username,
-//            "password": password
-//        ]
-//        
-//        Alamofire.request(url, method: .post, parameters: params)
-//            .validate()
-//            .responseData { (response) in
-//                
-//                print(response)
-//                switch response.result {
-//                case .success(let value):
-//                    do {
-//                        let user = try value.decode(User.self)
-//                        completion(.success(user))
-//                    } catch {
-//                        completion(.error(error))
-//                    }
-//                case .failure(let error):
-//                    completion(.error(error))
-//                }
-//        }
-//    }
-//}
+
+public enum ImaggaRouter: URLRequestConvertible {
+    // 1
+    enum Constants {
+        static let baseURLPath = API.baseURL
+        static let authenticationToken = "Basic xxx"
+    }
+    
+    // 2
+    case content
+    case tags(String)
+    case colors(String)
+    
+    // 3
+    var method: HTTPMethod {
+        switch self {
+        case .content:
+            return .post
+        case .tags, .colors:
+            return .get
+        }
+    }
+    
+    // 4
+    var path: String {
+        switch self {
+        case .content:
+            return "/content"
+        case .tags:
+            return "/tagging"
+        case .colors:
+            return "/colors"
+        }
+    }
+    
+    // 5
+    var parameters: [String: Any] {
+        switch self {
+        case .tags(let contentID):
+            return ["content": contentID]
+        case .colors(let contentID):
+            return ["content": contentID, "extract_object_colors": 0]
+        default:
+            return [:]
+        }
+    }
+    
+    // 6
+    public func asURLRequest() throws -> URLRequest {
+        let url = try Constants.baseURLPath.asURL()
+        
+        var request = URLRequest(url: url.appendingPathComponent(path))
+        request.httpMethod = method.rawValue
+        request.setValue(Constants.authenticationToken, forHTTPHeaderField: "Authorization")
+        request.timeoutInterval = TimeInterval(10 * 1000)
+        
+        return try URLEncoding.default.encode(request, with: parameters)
+    }
+}
+

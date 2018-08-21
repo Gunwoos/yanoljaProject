@@ -32,33 +32,35 @@ final class LoginViewController: BaseViewController {
             "password": password
         ]
         let url = API.Auth.signIn
-         
+        Alamofire.request(url , method: .post , parameters: params )
+            .validate()
+            .response { (response) in
+                
+                if let data = response.data {
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+                        
+                        if let token = jsonData["token"] as? String {
+                            self.m_appDelegate.m_userInfo.isLogin = true
 
-//        Alamofire.request(url, method: .post, parameters: params)
-//            .validate()
-//            .responseData { (response) in
-//
-//                switch response.result {
-//                case .success(let value):
-//                    do {
-//                         self.m_appDelegate.m_userInfo.token = self.globalFuncs.getStringValue(value as AnyObject!, key: "token")
-//                        self.m_appDelegate.m_userInfo.isLogin = true
-//
-//                        // 레퍼런스저장
-//                        //self.m_appDelegate.setLoginType(type)
-//                        self.m_appDelegate.setUserId(username)
-//
-//                        // 메인페이지로 이동
-//                        self.pushVC("HomeViewController", storyboard: "Main", animated: true)
-//                    } catch {
-//                        print(error)
-//                    }
-//                case .failure(let error):
-//                    print("error: " , error)
-//                }
-//        }
+                            // 레퍼런스저장
+                            self.m_appDelegate.setUserToken(token)
+
+                            // 메인페이지로 이동
+                            self.pushVC("HomeViewController", storyboard: "Main", animated: true)
+                        }
+                        
+                    } catch {
+                        print("Error: ", error)
+                    }
+                    
+                }
+        }
+        
  
     }
+    
+    
      
     override func viewDidLoad() {
         super.viewDidLoad()

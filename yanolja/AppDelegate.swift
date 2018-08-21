@@ -49,6 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaults = UserDefaults.standard
         userDefaults.setValue(userid, forKey: "userid")
     }
+    
+    func setUserToken(_ token : String) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(token, forKey: "token")
+    }
 
 }
 
