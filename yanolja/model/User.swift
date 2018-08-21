@@ -19,7 +19,9 @@ import Foundation
 //                    "groups": [],
 //                    "user_permissions": []
 //            }
-
+struct GetUserInfo: Decodable {
+    let token : String
+}
 
 class UserInfo {
     

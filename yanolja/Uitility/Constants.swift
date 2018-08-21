@@ -9,10 +9,11 @@
 import Foundation
 
 enum API {
-    static let baseURL = "https://www.pmb.kr/"
+    static let baseURL = "https://api.pmb.kr/"
     
     enum Auth {
         static let signUp = API.baseURL + "members/signup/"
         static let signIn = API.baseURL + "members/login/"
+        static let memberDetail = API.baseURL + "members/detail/"
     }
 }

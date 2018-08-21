@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import Toaster
 
 class FindUserViewController: UIViewController {
     

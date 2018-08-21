@@ -131,7 +131,7 @@ struct PensionList{
 }
  
 
-let urlString = "https://www.pmb.kr/location/location-name/"
+let urlString = "\(API.baseURL)location/location-name/"
 var pensionLocationData = Array<PensionLocationData>()
 var pensionData = Array<PensionList>()
 

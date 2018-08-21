@@ -21,6 +21,7 @@
 		2A331588212A79460035A43A /* Data+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A331587212A79460035A43A /* Data+Decoder.swift */; };
 		2A33158C212A87980035A43A /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33158A212A87980035A43A /* MainTableViewCell.swift */; };
 		2A33158D212A87980035A43A /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A33158B212A87980035A43A /* MainTableViewCell.xib */; };
+		2A836910212BE14200712520 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A83690F212BE14200712520 /* GoogleService-Info.plist */; };
 		2AB0EE2A2114011600A3C4BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0EE292114011600A3C4BF /* AppDelegate.swift */; };
 		2AB0EE2F2114011600A3C4BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AB0EE2D2114011600A3C4BF /* Main.storyboard */; };
 		2AB0EE312114011800A3C4BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AB0EE302114011800A3C4BF /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		2A331587212A79460035A43A /* Data+Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Decoder.swift"; sourceTree = "<group>"; };
 		2A33158A212A87980035A43A /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTableViewCell.swift; path = yanolja/controller/Main/MainTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		2A33158B212A87980035A43A /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainTableViewCell.xib; path = yanolja/controller/Main/MainTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		2A83690F212BE14200712520 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AB0EE262114011600A3C4BF /* yanolja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yanolja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB0EE292114011600A3C4BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AB0EE2E2114011600A3C4BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				2AB0EE352114011800A3C4BF /* Info.plist */,
 				2AB0EE712114061F00A3C4BF /* yanolja_bridge.m */,
 				2AB0EE702114061F00A3C4BF /* yanolja-Bridging-Header.h */,
+				2A83690F212BE14200712520 /* GoogleService-Info.plist */,
 			);
 			path = yanolja;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AB0EE402114015700A3C4BF /* Login.storyboard in Resources */,
+				2A836910212BE14200712520 /* GoogleService-Info.plist in Resources */,
 				2A1EE99921240230001AAE90 /* DetailFooterTableViewCell.xib in Resources */,
 				2AB0EE342114011800A3C4BF /* LaunchScreen.storyboard in Resources */,
 				2AB0EE312114011800A3C4BF /* Assets.xcassets in Resources */,
@@ -413,26 +417,30 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-yanolja/Pods-yanolja-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONParserSwift/JSONParserSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
-				"${BUILT_PRODUCTS_DIR}/MXSegmentedControl/MXSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONParserSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

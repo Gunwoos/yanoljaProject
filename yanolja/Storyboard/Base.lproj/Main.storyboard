@@ -220,6 +220,7 @@
                     <connections>
                         <outlet property="FirstView" destination="KMf-8L-blx" id="iln-fl-oKq"/>
                         <outlet property="SecondView" destination="xbe-pJ-2QC" id="DlI-gn-xZ8"/>
+                        <outlet property="TitleLabel" destination="rQb-OT-eCx" id="BTP-r1-Xub"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ns1-hi-noz" userLabel="First Responder" sceneMemberID="firstResponder"/>

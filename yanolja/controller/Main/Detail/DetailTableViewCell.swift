@@ -8,8 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-import MXSegmentedControl
-
+ 
 class DetailTableViewCell: UITableViewCell ,UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!

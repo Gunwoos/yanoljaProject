@@ -13,5 +13,7 @@ target 'yanolja' do
   pod 'SVProgressHUD', '~> 2.2'
   pod 'Toaster'
   pod "JSONParserSwift"
-  pod 'MXSegmentedControl'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+
 end
