@@ -10,11 +10,12 @@ import CoreLocation
 import MapKit
 import UIKit
 
+
+// MARK: - mapView 에 저장될 annotation 구조
 final class LocationInfo: MKPointAnnotation{
     var pensionPk: Int!
-    var pensionTitle: String!
     var pensionImageURL: String!
-    var pensionPrice: Int!
+    var pensionPrice: String!
     var pensionRoomNum: Int!
     var pensionSubLocation: String!
 }
@@ -42,6 +43,7 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var PensionName: UILabel!
     @IBOutlet private weak var PensionRoomOfNum: UILabel!
     @IBOutlet private weak var PensionPrice: UILabel!
+    @IBOutlet private weak var PensionImage: UIImageView!
     
     @IBOutlet private weak var pensionListButton: UIButton!
     
@@ -50,7 +52,7 @@ class SearchViewController: UIViewController {
     private var mapViewLevel = 2
     
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,32 +65,46 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
+    
+    // MARK: mapView 에 mapViewLevel 에 따라 annotation 을 다르게 뿌려줌
     func addLocationAnnotations(_ checkMapViewLevel : Int){
         if checkMapViewLevel == 0{
-            var rowNum = 0
-            for i in 0...pensionLocationData.count-1{
-                rowNum = rowNum + pensionLocationData[i].pensionOfNum
-            }
-            print("pensionNum : \(rowNum)")
-            for i in 0...rowNum{
+            for i in 0...pensionData.count - 1{
                 let newLocation = LocationInfo()
                 newLocation.title = pensionData[i].pensionName
                 newLocation.coordinate = CLLocationCoordinate2DMake(
                     pensionData[i].pensionLatitude,
                     pensionData[i].pensionLongitude
                 )
-                
+                newLocation.pensionPk = pensionData[i].pensionPk
+                newLocation.pensionImageURL = pensionData[i].pensionImage
+                newLocation.pensionPrice = String(pensionData[i].pensionLowestPrice)
+                newLocation.pensionSubLocation = pensionData[i].pensionSubLocation
                 
                 mapView.addAnnotation(newLocation)
             }
         }
         else if checkMapViewLevel == 1{
             removeMK()
+            for i in 0...pensionLocationData.count - 1{
+                let newLocation = LocationInfo()
+                newLocation.title = String(pensionLocationData[i].pensionOfNum)
+                if pensionLocationData[i].name == "가평"{
+                    newLocation.coordinate = CLLocationCoordinate2DMake(37.818750, 127.451799)
+                }
+                else if pensionLocationData[i].name == "경기"{
+                    newLocation.coordinate = CLLocationCoordinate2DMake(37.294040, 127.155777)
+                }
+                else{
+                    
+                }
+                mapView.addAnnotation(newLocation)
+            }
         }
         else{
             removeMK()
             let newLocation = LocationInfo()
-            newLocation.title = ""
+            newLocation.title = String(pensionNum)
             newLocation.coordinate = CLLocationCoordinate2DMake(37.841819, 127.536392)
             
             mapView.addAnnotation(newLocation)
@@ -139,7 +155,7 @@ class SearchViewController: UIViewController {
                     })
             },
                 completion: { _ in
-//                    self.pensionListButton.titleLabel?.text = "목록"
+                    //                    self.pensionListButton.titleLabel?.text = "목록"
             })
         }
     }
@@ -157,11 +173,14 @@ class SearchViewController: UIViewController {
             }
         }
         self.PensionName.text = (sender.annotation?.title)!
-        print((sender.annotation as? LocationInfo)?.pensionPrice)
-//        self.PensionPrice.text = sender.annotation?.
-        
-        
-        
+        self.PensionPrice.text = (sender.annotation as? LocationInfo)?.pensionPrice!
+        let url = URL(string: ((sender.annotation as? LocationInfo)?.pensionImageURL)!)!
+        if let data = try? Data(contentsOf: url){
+            self.PensionImage.image = UIImage(data: data)
+        }
+        else{
+            self.PensionImage.image = UIImage(named: "bg02")
+        }
     }
     
 }
@@ -211,52 +230,78 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard mapViewLevel == 0 else { return }
-        let center = CLLocationCoordinate2D(
-            latitude: (view.annotation?.coordinate.latitude)!,
-            longitude: (view.annotation?.coordinate.longitude)!
-        )
-        let span = MKCoordinateSpan(
-            latitudeDelta: mapView.region.span.latitudeDelta,
-            longitudeDelta: mapView.region.span.longitudeDelta
-        )
-        let region = MKCoordinateRegion(center: center, span: span)
-        mapView.setRegion(region, animated: true)
-        
-        UIView.animateKeyframes(
-            withDuration: 1.0,
-            delay: 0.0,
-            options: [],
-            animations: {
-                UIView.addKeyframe(
-                    withRelativeStartTime: 0.5,
-                    relativeDuration: 0.25,
-                    animations: {
-                        view.transform = view.transform.scaledBy(x: 1.5, y: 1.5)
-                })
-                UIView.addKeyframe(
-                    withRelativeStartTime: 0.75,
-                    relativeDuration: 0.5,
-                    animations: {
-                        self.pensionListButton.center.y = self.view.frame.midY + 100
-                })
-        },
-            completion: { _ in
-                self.setPensionInfo(view, mapView)
-                
-                if self.LocationInfoView.isHidden == true{
-                    self.LocationInfoView.isHidden = false
-                }
-                else{
-                    self.LocationInfoView.isHidden = true
-                }
-                
-                print(mapView.annotations)
-                print(view.annotation!)
-                
-        })
+        if mapViewLevel == 0{
+            let center = CLLocationCoordinate2D(
+                latitude: (view.annotation?.coordinate.latitude)!,
+                longitude: (view.annotation?.coordinate.longitude)!
+            )
+            let span = MKCoordinateSpan(
+                latitudeDelta: mapView.region.span.latitudeDelta,
+                longitudeDelta: mapView.region.span.longitudeDelta
+            )
+            let region = MKCoordinateRegion(center: center, span: span)
+            mapView.setRegion(region, animated: true)
+            
+            UIView.animateKeyframes(
+                withDuration: 1.0,
+                delay: 0.0,
+                options: [],
+                animations: {
+                    UIView.addKeyframe(
+                        withRelativeStartTime: 0.5,
+                        relativeDuration: 0.25,
+                        animations: {
+                            view.transform = view.transform.scaledBy(x: 1.5, y: 1.5)
+                    })
+                    UIView.addKeyframe(
+                        withRelativeStartTime: 0.75,
+                        relativeDuration: 0.5,
+                        animations: {
+                            self.pensionListButton.center.y = self.view.frame.midY + 100
+                    })
+            },
+                completion: { _ in
+                    self.setPensionInfo(view, mapView)
+                    
+                    if self.LocationInfoView.isHidden == true{
+                        self.LocationInfoView.isHidden = false
+                    }
+                    else{
+                        self.LocationInfoView.isHidden = true
+                    }
+            })
+        }
+        else if mapViewLevel == 1 {
+            let center = CLLocationCoordinate2D(
+                latitude: (view.annotation?.coordinate.latitude)!,
+                longitude: (view.annotation?.coordinate.longitude)!
+            )
+            //            region.span.latitudeDelta
+            
+            let span = MKCoordinateSpan(
+                latitudeDelta: 0.5,
+                longitudeDelta: 0.5
+            )
+            let region = MKCoordinateRegion(center: center, span: span)
+            mapView.setRegion(region, animated: true)
+        }
+        else if mapViewLevel == 2 {
+            let center = CLLocationCoordinate2D(
+                latitude: (view.annotation?.coordinate.latitude)!,
+                longitude: (view.annotation?.coordinate.longitude)!
+            )
+            let span = MKCoordinateSpan(
+                latitudeDelta: 1.5,
+                longitudeDelta: 1.5
+            )
+            let region = MKCoordinateRegion(center: center, span: span)
+            mapView.setRegion(region, animated: true)
+        }
+        else{
+            return
+        }
     }
-
+    
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         guard mapViewLevel == 0 else { return }
         UIView.animateKeyframes(
