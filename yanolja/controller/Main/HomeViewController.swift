@@ -56,6 +56,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate{
         //self.navigationItem.titleView = label
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
+    
     func fetchPensionAPI(){
         let url = URL(string: urlString)!
         

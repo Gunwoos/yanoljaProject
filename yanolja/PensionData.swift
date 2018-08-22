@@ -8,39 +8,6 @@
 
 import UIKit
 
-//
-//let urlString = "https://www.pmb.kr/location/"
-//
-//func fetchPensionAPI(){
-//    let url = URL(string: urlString)!
-//
-//    let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//        guard let response = response as? HTTPURLResponse, let data = data else { return }
-//        guard 200..<400 ~= response.statusCode else { return }
-//        do{
-//            print("start input data")
-//            let pensionList = try JSONDecoder().decode([PensionData].self, from: data)
-//            for i in 0...pensionList.count-1{
-//                let Pension = PensionList.init(
-//                    pensionPk: pensionList[i].pensionPk,
-//                    pensionName: pensionList[i].pensionName,
-//                    pensionImage: pensionList[i].pensionImage,
-//                    pensionLowestPrice: pensionList[i].pensionLowestPrice,
-//                    pensionDiscountRate: pensionList[i].pensionDiscountRate,
-//                    pensionLatitude: pensionList[i].pensionLatitude,
-//                    pensionLongitude: pensionList[i].pensionLongitude
-//                )
-//                pensionData.append(Pension)
-//
-//            }
-//            print("pensionData : \(pensionData)")
-//        } catch {
-//            print("error : \(error.localizedDescription)")
-//        }
-//    }
-//    dataTask.resume()
-//}
-
 struct PensionLocationParsingData: Decodable{
     let name: String
     let pensionOfNum: Int
