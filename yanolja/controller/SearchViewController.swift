@@ -57,6 +57,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pensionListButton.layer.borderColor = UIColor.black.cgColor
+        pensionListButton.layer.borderWidth = 1
         SetPensionListButton()
         addLocationAnnotations(mapViewLevel)
     }
