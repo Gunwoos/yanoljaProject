@@ -174,13 +174,16 @@ class SearchViewController: UIViewController {
         }
         self.PensionName.text = (sender.annotation?.title)!
         self.PensionPrice.text = (sender.annotation as? LocationInfo)?.pensionPrice!
+        
         let url = URL(string: ((sender.annotation as? LocationInfo)?.pensionImageURL)!)!
+        print("\(url)")
         if let data = try? Data(contentsOf: url){
             self.PensionImage.image = UIImage(data: data)
         }
         else{
             self.PensionImage.image = UIImage(named: "bg02")
         }
+
     }
     
 }
@@ -261,10 +264,9 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
                     })
             },
                 completion: { _ in
-                    self.setPensionInfo(view, mapView)
-                    
                     if self.LocationInfoView.isHidden == true{
                         self.LocationInfoView.isHidden = false
+                        self.setPensionInfo(view, mapView)
                     }
                     else{
                         self.LocationInfoView.isHidden = true
