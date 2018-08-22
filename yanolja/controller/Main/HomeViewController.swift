@@ -13,9 +13,6 @@ class HomeViewController: BaseViewController, HomeCellDelegate{
     
 
     @IBOutlet weak var pensionTableView: UITableView!
-    var rowNum = 0
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,6 +122,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate{
                         }
                         DispatchQueue.global().async {
                             DispatchQueue.main.async {
+                                print("home view data reload")
                                 self.pensionTableView.reloadData()
                             }
                         }

@@ -249,7 +249,7 @@ struct pensionDetailData {
 
 
 let urlString = "\(API.baseURL)location/location-name/"
-let pensionUrlString = "\(API.baseURL)location/"
+let pensionUrlString = "\(API.baseURL)/location/"
 var pensionNum = 0
 var pensionLocationData = Array<PensionLocationData>()
 var pensionData = Array<PensionList>()
