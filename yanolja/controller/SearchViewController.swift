@@ -10,6 +10,8 @@ import CoreLocation
 import MapKit
 import UIKit
 
+
+// MARK: - mapView 에 저장될 annotation 구조
 final class LocationInfo: MKPointAnnotation{
     var pensionPk: Int!
     var pensionImageURL: String!
@@ -63,6 +65,8 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
+    
+    // MARK: mapView 에 mapViewLevel 에 따라 annotation 을 다르게 뿌려줌
     func addLocationAnnotations(_ checkMapViewLevel : Int){
         if checkMapViewLevel == 0{
             for i in 0...pensionData.count - 1{
