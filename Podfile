@@ -7,7 +7,6 @@ target 'yanolja' do
 
   # Pods for yanolja
   pod 'Alamofire', '~> 4.7'
-  pod 'XLPagerTabStrip', '~> 8.0'
   pod 'SDWebImage/WebP'
   pod 'MGSwipeTableCell', '~> 1.6'
   pod 'SVProgressHUD', '~> 2.2'
