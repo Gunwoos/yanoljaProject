@@ -23,7 +23,9 @@ class SettingViewController: UIViewController , UICollectionViewDelegate , UICol
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()  
+        super.viewDidLoad()
+        let nib = UINib.init(nibName: cellId, bundle: nil)
+        self.collectionview.register(nib, forCellReuseIdentifier: cellId)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

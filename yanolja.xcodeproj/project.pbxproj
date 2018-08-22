@@ -234,9 +234,9 @@
 		2AB0EE3C2114012900A3C4BF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2AB0EE8221143F0000A3C4BF /* BaseViewController.swift */,
 				2A2AF016212D083A00FAEF25 /* Setting */,
 				2A331589212A87690035A43A /* Main */,
-				2AB0EE8221143F0000A3C4BF /* BaseViewController.swift */,
 				2AB0EE5C2114038900A3C4BF /* User */,
 				2AB0EE522114031F00A3C4BF /* CheckBookingViewController.swift */,
 				2AB0EE542114033300A3C4BF /* LocationViewController.swift */,
