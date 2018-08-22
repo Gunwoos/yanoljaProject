@@ -66,7 +66,37 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYH-PY-hmX">
                                 <rect key="frame" x="0.0" y="200" width="375" height="226"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VTD-HV-lz1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="226"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="opH-TX-9sd">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IconCell" id="TQH-ll-kba" customClass="IconCell" customModule="yanolja" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="dXi-FH-yAY" id="Ipg-wB-Bt5"/>
+                                            <outlet property="delegate" destination="dXi-FH-yAY" id="oiQ-MI-2rU"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.9175126903553299" green="0.9175126903553299" blue="0.9175126903553299" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="VTD-HV-lz1" firstAttribute="leading" secondItem="PYH-PY-hmX" secondAttribute="leading" id="4yQ-ff-EV5"/>
+                                    <constraint firstAttribute="trailing" secondItem="VTD-HV-lz1" secondAttribute="trailing" id="tmg-4i-QrK"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzG-PV-E7i">
                                 <rect key="frame" x="0.0" y="426" width="375" height="192"/>
@@ -116,17 +146,22 @@
                             <constraint firstItem="PYH-PY-hmX" firstAttribute="top" secondItem="eZR-06-GzG" secondAttribute="bottom" id="BhE-TS-U2x"/>
                             <constraint firstItem="eZR-06-GzG" firstAttribute="leading" secondItem="bad-gb-ukX" secondAttribute="leading" id="HFB-5q-1KC"/>
                             <constraint firstItem="bad-gb-ukX" firstAttribute="bottom" secondItem="TzG-PV-E7i" secondAttribute="bottom" id="Kkk-k6-PO7"/>
+                            <constraint firstItem="VTD-HV-lz1" firstAttribute="top" secondItem="eZR-06-GzG" secondAttribute="bottom" id="L0g-vK-Bk7"/>
                             <constraint firstItem="TzG-PV-E7i" firstAttribute="leading" secondItem="PYH-PY-hmX" secondAttribute="leading" id="Tj7-Q3-LER"/>
                             <constraint firstItem="bad-gb-ukX" firstAttribute="bottom" secondItem="PYH-PY-hmX" secondAttribute="bottom" constant="192" id="UYS-Eg-JeW"/>
                             <constraint firstItem="TzG-PV-E7i" firstAttribute="width" secondItem="PYH-PY-hmX" secondAttribute="width" id="ao4-IM-QpJ"/>
                             <constraint firstItem="eZR-06-GzG" firstAttribute="trailing" secondItem="bad-gb-ukX" secondAttribute="trailing" id="bgk-Fw-PJK"/>
                             <constraint firstItem="eZR-06-GzG" firstAttribute="top" secondItem="TCi-Vh-hOS" secondAttribute="top" id="e6a-Px-Thq"/>
                             <constraint firstItem="bad-gb-ukX" firstAttribute="bottom" secondItem="eZR-06-GzG" secondAttribute="bottom" constant="418" id="lfz-oN-NBs"/>
+                            <constraint firstItem="TzG-PV-E7i" firstAttribute="top" secondItem="VTD-HV-lz1" secondAttribute="bottom" id="xXX-FG-MOv"/>
                             <constraint firstItem="PYH-PY-hmX" firstAttribute="leading" secondItem="eZR-06-GzG" secondAttribute="leading" id="xgB-nb-Xe6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bad-gb-ukX"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="K5O-WE-9X5"/>
+                    <connections>
+                        <outlet property="collectionview" destination="VTD-HV-lz1" id="NH3-QE-7Kv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvw-3W-nqy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

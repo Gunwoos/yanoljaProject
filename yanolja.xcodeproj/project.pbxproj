@@ -13,6 +13,8 @@
 		2A1EE99821240230001AAE90 /* DetailFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1EE99621240230001AAE90 /* DetailFooterTableViewCell.swift */; };
 		2A1EE99921240230001AAE90 /* DetailFooterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A1EE99721240230001AAE90 /* DetailFooterTableViewCell.xib */; };
 		2A26A1802117DC66001FE313 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A26A17F2117DC66001FE313 /* UIView+Toast.m */; };
+		2A2AF019212D086800FAEF25 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2AF017212D086800FAEF25 /* IconCell.swift */; };
+		2A2AF01A212D086800FAEF25 /* IconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A2AF018212D086800FAEF25 /* IconCell.xib */; };
 		2A331579212A5D680035A43A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A331578212A5D680035A43A /* Constants.swift */; };
 		2A33157E212A5EE60035A43A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33157D212A5EE60035A43A /* User.swift */; };
 		2A331580212A61280035A43A /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33157F212A61280035A43A /* Manager.swift */; };
@@ -64,6 +66,8 @@
 		2A1EE99721240230001AAE90 /* DetailFooterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailFooterTableViewCell.xib; sourceTree = "<group>"; };
 		2A26A17E2117DC66001FE313 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		2A26A17F2117DC66001FE313 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		2A2AF017212D086800FAEF25 /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconCell.swift; path = yanolja/controller/Setting/IconCell.swift; sourceTree = SOURCE_ROOT; };
+		2A2AF018212D086800FAEF25 /* IconCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = IconCell.xib; path = yanolja/controller/Setting/IconCell.xib; sourceTree = SOURCE_ROOT; };
 		2A331578212A5D680035A43A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2A33157D212A5EE60035A43A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = yanolja/model/User.swift; sourceTree = SOURCE_ROOT; };
 		2A33157F212A61280035A43A /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
@@ -144,13 +148,23 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
-		2A331582212A78490035A43A /* Service */ = {
+		2A2AF016212D083A00FAEF25 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				2AB0EE502114030700A3C4BF /* SettingViewController.swift */,
+				2A2AF017212D086800FAEF25 /* IconCell.swift */,
+				2A2AF018212D086800FAEF25 /* IconCell.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		2A331582212A78490035A43A /* Service_1 */ = {
 			isa = PBXGroup;
 			children = (
 				2A331583212A785B0035A43A /* AuthService.swift */,
 				2A331585212A78870035A43A /* ServiceResult.swift */,
 			);
-			name = Service;
+			name = Service_1;
 			path = "New Group";
 			sourceTree = "<group>";
 		};
@@ -191,7 +205,7 @@
 				2AB0EE412114018B00A3C4BF /* HomeTableViewCell.swift */,
 				C4FCBC572126C3A2008803E8 /* PensionData.swift */,
 				C4DEE553211D287A00DEFC8A /* SearchViewCell.swift */,
-				2A331582212A78490035A43A /* Service */,
+				2A331582212A78490035A43A /* Service_1 */,
 				2A26A17C2117DC4C001FE313 /* Library */,
 				2AB0EE8021143EA200A3C4BF /* Uitility */,
 				2AB0EE492114024700A3C4BF /* Extension */,
@@ -220,10 +234,10 @@
 		2AB0EE3C2114012900A3C4BF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2A331589212A87690035A43A /* Main */,
 				2AB0EE8221143F0000A3C4BF /* BaseViewController.swift */,
+				2A2AF016212D083A00FAEF25 /* Setting */,
+				2A331589212A87690035A43A /* Main */,
 				2AB0EE5C2114038900A3C4BF /* User */,
-				2AB0EE502114030700A3C4BF /* SettingViewController.swift */,
 				2AB0EE522114031F00A3C4BF /* CheckBookingViewController.swift */,
 				2AB0EE542114033300A3C4BF /* LocationViewController.swift */,
 				C4DEE557211D28AB00DEFC8A /* SearchViewController.swift */,
@@ -383,6 +397,7 @@
 				2AB0EE342114011800A3C4BF /* LaunchScreen.storyboard in Resources */,
 				2AB0EE312114011800A3C4BF /* Assets.xcassets in Resources */,
 				2A1C4D68211FFE4900D7E051 /* DetailTableViewCell.xib in Resources */,
+				2A2AF01A212D086800FAEF25 /* IconCell.xib in Resources */,
 				2AB0EE2F2114011600A3C4BF /* Main.storyboard in Resources */,
 				2A33158D212A87980035A43A /* MainTableViewCell.xib in Resources */,
 			);
@@ -424,7 +439,6 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
-				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -438,7 +452,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -471,6 +484,7 @@
 				2AB0EE852114505D00A3C4BF /* FindUserViewController.swift in Sources */,
 				2AB0EE552114033300A3C4BF /* LocationViewController.swift in Sources */,
 				2AB0EE6D211404E200A3C4BF /* Page.swift in Sources */,
+				2A2AF019212D086800FAEF25 /* IconCell.swift in Sources */,
 				2AB0EE66211403FD00A3C4BF /* PageCell.swift in Sources */,
 				2AB0EE44211401AB00A3C4BF /* Global.swift in Sources */,
 				2AB0EE62211403CF00A3C4BF /* SingupDetailViewController.swift in Sources */,
