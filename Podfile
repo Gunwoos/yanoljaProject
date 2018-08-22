@@ -11,8 +11,5 @@ target 'yanolja' do
   pod 'MGSwipeTableCell', '~> 1.6'
   pod 'SVProgressHUD', '~> 2.2'
   pod 'Toaster'
-  pod "JSONParserSwift"
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-
+  pod 'SQLite.swift', '~> 0.11.5'
 end

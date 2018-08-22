@@ -106,7 +106,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate{
                     guard let response = response as? HTTPURLResponse, let data = data else { return }
                     guard 200..<400 ~= response.statusCode else {return}
                     do{
-                        print("start input data")
+                        //print("start input data")
                         let pensionList = try JSONDecoder().decode([PensionData].self, from: data)
                         
                         for k in 0...pensionList.count-1{
@@ -165,7 +165,7 @@ extension HomeViewController: UITableViewDelegate {
 // MARK :- UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowNum
+        return pensionNum
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

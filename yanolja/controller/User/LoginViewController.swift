@@ -21,39 +21,7 @@ final class LoginViewController: BaseViewController {
     @IBOutlet weak var fbloginButton: FBSDKLoginButton!
    // var authService: AuthServiceType?
  
-    
-    func check_duplicate(){
-        guard let username = username.text,
-            let password = userpwd.text
-            else { return }
-        
-        let params: Parameters = [
-            "username": username,
-            "password": password
-        ]
-       // let url = API.Auth.signIn
-        let signInURL = API.Auth.signIn
- 
-         
-        Alamofire
-            .request(signInURL, method: .post, parameters: params)
-            .validate(statusCode: 200..<400)
-            .responseData { (response) in
-                switch response.result {
-                case .success(let value):
-                    print("successed : ",value)
-                    let get = try! JSONDecoder().decode(GetUserInfo.self, from: value)
-                    self.m_appDelegate.setUserToken(get.token)
-                    //메인페이지로 이동 
-                    self.pushVC("HomeViewController", storyboard: "Main", animated: true)
-                case .failure(let error):
-                    print(error)
-                }
-        }
-    }
-    
-    
-     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -155,6 +123,37 @@ final class LoginViewController: BaseViewController {
         
         check_duplicate()
     }
+    
+   private func check_duplicate(){
+        guard let username = username.text,
+            let password = userpwd.text
+            else { return }
+        
+        let params: Parameters = [
+            "username": username,
+            "password": password
+        ]
+        // let url = API.Auth.signIn
+        let signInURL = API.Auth.signIn
+        
+        
+        Alamofire
+            .request(signInURL, method: .post, parameters: params)
+            .validate(statusCode: 200..<400)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let value):
+                    print("successed : ",value)
+                    let get = try! JSONDecoder().decode(GetUserInfo.self, from: value)
+                    self.m_appDelegate.setUserToken(get.token)
+                    //메인페이지로 이동
+                    self.pushVC("HomeViewController", storyboard: "Main", animated: true)
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
+    
 }
 
 
