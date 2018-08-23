@@ -13,6 +13,8 @@ class LocationViewController: UIViewController {
     @IBOutlet weak var groupingTableView: UIView!
     @IBOutlet weak var LocationTableView: UITableView!
     @IBOutlet weak var subLocationTableView: UITableView!
+    
+    var sendSubLocationData = ""
     var LocationRowNum = 0
     
     override func viewDidLoad() {
@@ -47,10 +49,10 @@ class LocationViewController: UIViewController {
             width: (self.view.frame.width/3)*2,
             height: subLocationTableView.frame.height
         )
-        
-
     }
+    
 }
+
 
 extension LocationViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -59,16 +61,36 @@ extension LocationViewController: UITableViewDelegate{
             subLocationTableView.reloadData()
         }
         if tableView == subLocationTableView{
-//            let subLocationVC = SubLocationViewController()
-//            
-//            present(subLocationVC, animated: true) {
-//                subLocationVC.subPensionLocation = pensionLocationData[self.LocationRowNum].sublocations[indexPath.row].sublocationNum
-//            }
+            sendSubLocationData = pensionLocationData[LocationRowNum].sublocations[indexPath.row].sublocationNum
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let subLocationViewController = storyboard.instantiateViewController(withIdentifier: "SubLocationViewController") as! SubLocationViewController
+            subLocationViewController.subPensionLocation = self.sendSubLocationData
+            show(subLocationViewController, sender: nil)
+            
 
         }
     }
+//    @IBAction func itemSelected(_ sender: UIButton) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let secondViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController //Storyboard ID를 설정해줘야 한다.
+//        secondViewController.itemID = cartButton.tag
+//        self.window?.rootViewController?.show(secondViewController, sender: nil)
+//        print(mainTitle.text)
+//    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "showSubLocationView"{
+//            let subLocationViewController = segue.destination as! SubLocationViewController
+//
+//            subLocationViewController.subPensionLocation = sendSubLocationData
+//            print("prepare : \(subLocationViewController.subPensionLocation)")
+//
+//        }
+//    }
     
 }
+
 extension LocationViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == LocationTableView{
