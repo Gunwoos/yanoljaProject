@@ -21,6 +21,8 @@ class PensionDetailViewController: BaseViewController {
     let EnterCellId = "PensionCheckOutCell"
     let ThemeCellId = "ThemeCell"
     
+    //var themeTVC : ShopDetailHeaderTVC!
+    
      override func viewDidLoad() {
         super.viewDidLoad()
         DetailTableView.delegate = self
@@ -183,28 +185,41 @@ extension PensionDetailViewController: UITableViewDelegate , UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: ThemeCellId, for: indexPath) as! ThemeCell
             tableView.rowHeight = 200
             let theme = pensionDetailDataArray[0].pensionTheme
-            var themeArr  : [String] = []
+            var themeArr  =  [String]()
             theme.split(separator:",").map{ themeArr.append(String($0)) }
+            
+//            cell.MoreLabel.isUserInteractionEnabled = true
+//            cell.MoreLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ThemeMore)))
+//
+//            @objc func ThemeMore(){
+//                let storyboard = UIStoryboard(name: "Pension", bundle: nil)
+//                let entryViewController = storyboard.instantiateViewController(withIdentifier: "ThemeViewController")
+//
+//                self.present(entryViewController, animated: true)
+//            }
+            
             for i in themeArr {
-                if let icon = cell.iconName[i] {
-                    cell.iconImageView1.image = UIImage(named: icon)
-                   // cell.iconTitle1.text = cell.iconName[0]
+                if i == "수영장" {
+                    cell.iconImageView1.image = UIImage(named: "swimming")
+                    cell.iconTitle1.text = "수영장"
                 }
-                
-              
-                
-//                if let icon = cell.iconName[2] {
-//                    cell.iconImageView3.image = UIImage(named: icon)
-//                    cell.iconTitle3.text = cell.iconName[0]
-//                }
-//                if let icon = cell.iconName[3] {
-//                    cell.iconImageView4.image = UIImage(named: icon)
-//                    cell.iconTitle4.text = cell.iconName[0]
-//                }
+
+                if i == "스파/월풀" {
+                    cell.iconImageView2.image = UIImage(named: "bath")
+                    cell.iconTitle2.text = "스파/월풀"
+                }
+
+                if i == "상비약" {
+                    cell.iconImageView3.image = UIImage(named: "doctors")
+                    cell.iconTitle3.text = "상비약"
+                }
+
+                if i == "IPTV/WiFi" {
+                    cell.iconImageView4.image = UIImage(named: "wifi")
+                    cell.iconTitle4.text = "IPTV/WiFi"
+                }
             }
             
-
-           // print(pensionDetailDataArray[0].pensionTheme)
             return cell
         } else if indexPath.section == 2 {
             
