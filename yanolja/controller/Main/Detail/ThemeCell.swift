@@ -9,15 +9,7 @@
 import UIKit
 
 class ThemeCell: UITableViewCell {
-    var iconName = [
-        "수영장" : "swimming",
-        "스파/월풀" : "bath",
-        "개별바비큐" : "weber",
-        "복층" : "home",
-        "IPTV/WiFi" : "wifi",
-        "기본양념" : "food",
-        "상비약" : "doctors"
-                    ]
+   
     @IBOutlet weak var iconImageView1: UIImageView!
     @IBOutlet weak var iconTitle1: UILabel!
     
@@ -32,9 +24,10 @@ class ThemeCell: UITableViewCell {
     
     @IBOutlet weak var MoreLabel: UILabel!
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+        super.awakeFromNib() 
     }
+    
+ 
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

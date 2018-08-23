@@ -58,6 +58,8 @@
 		2AB0EE7F21143DCF00A3C4BF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB0EE7D21143DCF00A3C4BF /* FBSDKLoginKit.framework */; };
 		2AB0EE8321143F0000A3C4BF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0EE8221143F0000A3C4BF /* BaseViewController.swift */; };
 		2AB0EE852114505D00A3C4BF /* FindUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0EE842114505D00A3C4BF /* FindUserViewController.swift */; };
+		2ADCF94F212F4AAA006CCF7A /* Pension.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ADCF94E212F4AAA006CCF7A /* Pension.storyboard */; };
+		2ADCF952212F4AEF006CCF7A /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADCF951212F4AEF006CCF7A /* ThemeViewController.swift */; };
 		C4221EB3212D428400A3DC6E /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4221EB2212D428400A3DC6E /* LikeViewController.swift */; };
 		C4221EB5212D612500A3DC6E /* SubLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4221EB4212D612500A3DC6E /* SubLocationViewController.swift */; };
 		C4221EB7212D636600A3DC6E /* SubLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4221EB6212D636600A3DC6E /* SubLocationMapViewController.swift */; };
@@ -125,6 +127,8 @@
 		2AB0EE8121143EAE00A3C4BF /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2AB0EE8221143F0000A3C4BF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2AB0EE842114505D00A3C4BF /* FindUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserViewController.swift; sourceTree = "<group>"; };
+		2ADCF94E212F4AAA006CCF7A /* Pension.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pension.storyboard; sourceTree = "<group>"; };
+		2ADCF951212F4AEF006CCF7A /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThemeViewController.swift; path = yanolja/Controller/Main/Detail/ThemeViewController.swift; sourceTree = SOURCE_ROOT; };
 		2E47619AA26A3D572CAFCFB3 /* Pods-yanolja.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yanolja.release.xcconfig"; path = "Pods/Target Support Files/Pods-yanolja/Pods-yanolja.release.xcconfig"; sourceTree = "<group>"; };
 		6EA21D8BF198F51A248679BF /* Pods_yanolja.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yanolja.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4221EB2212D428400A3DC6E /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LikeViewController.swift; path = yanolja/Controller/LikeViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -298,6 +302,7 @@
 				2AB0EE2D2114011600A3C4BF /* Main.storyboard */,
 				2AB0EE322114011800A3C4BF /* LaunchScreen.storyboard */,
 				2AB0EE3F2114015700A3C4BF /* Login.storyboard */,
+				2ADCF94E212F4AAA006CCF7A /* Pension.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 		2AB0EE672114041700A3C4BF /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				2ADCF951212F4AEF006CCF7A /* ThemeViewController.swift */,
 				2A1C4D65211FFE4900D7E051 /* DetailTableViewCell.swift */,
 				2A1C4D66211FFE4900D7E051 /* DetailTableViewCell.xib */,
 				2A322F86212EBB0C00ADF002 /* PensionInfoCell.swift */,
@@ -431,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ADCF94F212F4AAA006CCF7A /* Pension.storyboard in Resources */,
 				2AB0EE402114015700A3C4BF /* Login.storyboard in Resources */,
 				2A322F89212EBB0C00ADF002 /* PensionInfoCell.xib in Resources */,
 				2A836910212BE14200712520 /* GoogleService-Info.plist in Resources */,
@@ -517,6 +524,7 @@
 				2A331579212A5D680035A43A /* Constants.swift in Sources */,
 				2AB0EE8321143F0000A3C4BF /* BaseViewController.swift in Sources */,
 				2A33158C212A87980035A43A /* MainTableViewCell.swift in Sources */,
+				2ADCF952212F4AEF006CCF7A /* ThemeViewController.swift in Sources */,
 				2AB0EE60211403B500A3C4BF /* SplashViewController.swift in Sources */,
 				2AB0EE64211403DF00A3C4BF /* LoginViewController.swift in Sources */,
 				2A322F88212EBB0C00ADF002 /* PensionInfoCell.swift in Sources */,
