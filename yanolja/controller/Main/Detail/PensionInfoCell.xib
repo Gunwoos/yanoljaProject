@@ -31,15 +31,30 @@
                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ded-wW-ice">
+                        <rect key="frame" x="20" y="71" width="385" height="263.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ded-wW-ice" secondAttribute="bottom" constant="20" id="0QO-43-jFE"/>
                     <constraint firstItem="gFM-2Y-eAg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="2Bq-WG-jA7"/>
+                    <constraint firstItem="ded-wW-ice" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="A32-S0-X4s"/>
                     <constraint firstItem="gFM-2Y-eAg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Dhe-6h-EgB"/>
                     <constraint firstAttribute="trailing" secondItem="rDQ-JF-Bne" secondAttribute="trailing" constant="20" id="MQd-G5-aIW"/>
                     <constraint firstItem="rDQ-JF-Bne" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="fXJ-pI-DwL"/>
+                    <constraint firstItem="ded-wW-ice" firstAttribute="top" secondItem="gFM-2Y-eAg" secondAttribute="bottom" constant="30" id="yFJ-J0-8Rk"/>
+                    <constraint firstAttribute="trailing" secondItem="ded-wW-ice" secondAttribute="trailing" constant="20" id="zZ8-OQ-9XQ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="DetailLabel" destination="ded-wW-ice" id="Noc-IJ-OAn"/>
+                <outlet property="InfoTitle" destination="gFM-2Y-eAg" id="fmq-HW-Ndy"/>
+                <outlet property="MoreLabel" destination="rDQ-JF-Bne" id="cdO-Gn-k3q"/>
+            </connections>
             <point key="canvasLocation" x="42.5" y="56.5"/>
         </tableViewCell>
     </objects>

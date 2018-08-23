@@ -10,7 +10,11 @@ import UIKit
 import SVProgressHUD
  
 class DetailTableViewCell: UITableViewCell ,UIScrollViewDelegate {
+    @IBOutlet weak var NpriceLabel: UILabel! //원가
+    @IBOutlet weak var PriceLabel: UILabel! //할인가
     
+    @IBOutlet weak var DiscountLabel: UILabel! //할인율
+    @IBOutlet weak var TitleLabel: UILabel! //제목
     @IBOutlet weak var scrollView: UIScrollView!
     let pageControl = UIPageControl()
     var imageArr: [UIImage] = []
@@ -18,7 +22,7 @@ class DetailTableViewCell: UITableViewCell ,UIScrollViewDelegate {
     var m_nPageNum : Int = 1
     var m_shopInfo = ShopInfo()
     var m_arrImageURL : NSMutableArray! = nil
-    
+    var TopImage: [String] = []
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -37,11 +41,25 @@ class DetailTableViewCell: UITableViewCell ,UIScrollViewDelegate {
     }
     
     func makeImageData(){
-        let imagearr = [
-            "https://img.yapen.co.kr/pension/etc/24140/eae40424c6e4eab873dc1777656c0970.jpg",
-            "https://img.yapen.co.kr/pension/etc/24140/eae40424c6e4eab873dc1777656c0970.jpg",
-            "https://img.yapen.co.kr/pension/etc/24140/eae40424c6e4eab873dc1777656c0970.jpg"]
-        for i in imagearr {
+        
+         for rooms in pensionDetailDataArray[0].pensionRoom {
+            for dic in rooms.roomImages {
+                if let downloadImageRoom = dic["room_image"] {
+            
+                    TopImage.append(downloadImageRoom)
+                }
+            }
+        }
+        
+        for dict in pensionDetailDataArray[0].pensionImages {
+           
+            if let downloadImage = dict["pension_image"] {
+             
+                TopImage.append(downloadImage)
+            }
+        }
+        
+        for i in TopImage {
             m_shopInfo.photo.append(i)
         }
         
@@ -74,7 +92,7 @@ class DetailTableViewCell: UITableViewCell ,UIScrollViewDelegate {
             origin: CGPoint(x: scrollView.contentSize.width, y: 0),
             size: CGSize(width: scrollView.frame.width, height: height)
         )
-        print(scrollView.frame.height)
+     
         let imageButtonView = UIButton(frame: pageFrame)
         imageButtonView.contentMode = .scaleAspectFill
         imageButtonView.sd_setImage(with: URL(string: self.m_shopInfo.photo[i]), for: .normal)

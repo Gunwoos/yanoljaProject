@@ -126,6 +126,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate  {
                                 self.pensionTableView.reloadData()
                             }
                         }
+                        
                     } catch {
                         print("error : \(error.localizedDescription)")
                     }
@@ -149,10 +150,15 @@ extension HomeViewController: UITableViewDelegate {
         
         let row = indexPath.row
       
+        pensionDetailDataArray.removeAll()
         
-        m_appDelegate.m_pensionInfo.pk = pensionData[row].pensionPk
-        m_appDelegate.m_pensionInfo.sublocation = pensionData[row].pensionSubLocation
+        let idx = pensionData[row].pensionPk
+        let sublocationNum = pensionData[row].pensionSubLocation
+        
+        m_appDelegate.m_pensionInfo.pk = idx
+        m_appDelegate.m_pensionInfo.sublocation = sublocationNum
  
+        //fetchPensionDetail(subLocation: sublocationNum, pk: idx)
         
          self.pushVC("PensionDetailViewController", storyboard: "Main", animated: true)
     }
