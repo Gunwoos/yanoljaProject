@@ -16,6 +16,7 @@ final class LocationInfo: MKPointAnnotation{
     var pensionPk: Int!
     var pensionImageURL: String!
     var pensionPrice: String!
+    var pensionDiscountRate: Int!
     var pensionRoomNum: Int!
     var pensionSubLocation: String!
 }
@@ -43,6 +44,8 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var PensionName: UILabel!
     @IBOutlet private weak var PensionRoomOfNum: UILabel!
     @IBOutlet private weak var PensionPrice: UILabel!
+    @IBOutlet private weak var PensionDprice: UILabel!
+    @IBOutlet private weak var PensionDiscountRate: UILabel!
     @IBOutlet private weak var PensionImage: UIImageView!
     
     @IBOutlet private weak var pensionListButton: UIButton!
@@ -57,7 +60,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pensionListButton.layer.borderColor = UIColor.black.cgColor
+        pensionListButton.layer.borderColor = UIColor.lightGray.cgColor
         pensionListButton.layer.borderWidth = 1
         SetPensionListButton()
         addLocationAnnotations(mapViewLevel)
@@ -81,6 +84,7 @@ class SearchViewController: UIViewController {
                 newLocation.pensionPk = pensionData[i].pensionPk
                 newLocation.pensionImageURL = pensionData[i].pensionImage
                 newLocation.pensionPrice = String(pensionData[i].pensionLowestPrice)
+                newLocation.pensionDiscountRate = pensionData[i].pensionDiscountRate
                 newLocation.pensionSubLocation = pensionData[i].pensionSubLocation
                 
                 mapView.addAnnotation(newLocation)
@@ -119,7 +123,7 @@ class SearchViewController: UIViewController {
     
     func SetPensionListButton(){
         pensionListButton.center.x = self.view.frame.midX
-        pensionListButton.center.y = self.view.frame.maxY - 110
+        pensionListButton.center.y = self.view.frame.maxY - 70
         pensionListButton.backgroundColor = .white
         pensionListButton.layer.cornerRadius = 15
         
@@ -157,7 +161,6 @@ class SearchViewController: UIViewController {
                     })
             },
                 completion: { _ in
-                    //                    self.pensionListButton.titleLabel?.text = "목록"
             })
         }
     }
@@ -175,8 +178,18 @@ class SearchViewController: UIViewController {
             }
         }
         self.PensionName.text = (sender.annotation?.title)!
-        self.PensionPrice.text = (sender.annotation as? LocationInfo)?.pensionPrice!
-//        self.PensionRoomOfNum.text = String((sender.annotation as! LocationInfo)?.pensionRoomNum!)
+        let price = (sender.annotation as? LocationInfo)?.pensionPrice!
+        let discount = (sender.annotation as? LocationInfo)?.pensionDiscountRate!
+        
+        let nprice = Int(price!)! / 100 * discount!
+        let dprice = Int(price!)! + nprice
+        
+        self.PensionPrice.text = "\(price!)원~"
+        self.PensionDprice.text = "\(dprice)"
+        self.PensionDiscountRate.text = "~\(discount!)%"
+        
+        self.PensionRoomOfNum.text = "예약가능한 객실 4개"
+        
         let url = URL(string: ((sender.annotation as? LocationInfo)?.pensionImageURL)!)!
         print("\(url)")
         if let data = try? Data(contentsOf: url){
@@ -265,7 +278,7 @@ extension SearchViewController: MKMapViewDelegate{
                         withRelativeStartTime: 0.75,
                         relativeDuration: 0.5,
                         animations: {
-                            self.pensionListButton.center.y = self.view.frame.midY + 100
+                            self.pensionListButton.center.y = self.view.frame.midY + 70
                     })
             },
                 completion: { _ in
@@ -396,6 +409,13 @@ extension SearchViewController: UITableViewDataSource{
         cell.pensionRoomOfNub.text = "예약가능한 객실 4개"
         cell.pensionRoomOfNub.textColor = UIColor.lightGray
         cell.pensionPrice.text = "\(pensionData[indexPath.row].pensionLowestPrice)~"
+        let price = pensionData[indexPath.row].pensionLowestPrice
+        let discount = pensionData[indexPath.row].pensionDiscountRate
+        let nprice = price / 100 * discount
+        let dprice = price + nprice
+        cell.pensionPrice.text = "\(price)원~"
+        cell.pensionDprice.text = "\(dprice)원"
+        cell.pensionDiscountRate.text = "~\(discount)%"
         
         return cell
     }

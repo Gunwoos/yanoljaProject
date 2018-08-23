@@ -92,6 +92,10 @@ extension SubLocationViewController: UITableViewDataSource{
         return subPensionNum
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+
+       
+
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "subLocationCell", for: indexPath) as! SubLocationCell
 //        tableView.rowHeight = 200
 //
@@ -127,6 +131,7 @@ extension SubLocationViewController: UITableViewDataSource{
         cell.PriceLabel.text = "\(Global().getFormattedPrice(pensionData[indexPath.row].pensionLowestPrice)!)원~"
         
         cell.nPriceLabel.text = "\(Global().getFormattedPrice(dprice)!)원"
+
         return cell
     }
 }

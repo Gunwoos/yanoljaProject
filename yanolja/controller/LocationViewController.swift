@@ -70,25 +70,7 @@ extension LocationViewController: UITableViewDelegate{
             
 
         }
-    }
-//    @IBAction func itemSelected(_ sender: UIButton) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let secondViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController //Storyboard ID를 설정해줘야 한다.
-//        secondViewController.itemID = cartButton.tag
-//        self.window?.rootViewController?.show(secondViewController, sender: nil)
-//        print(mainTitle.text)
-//    }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "showSubLocationView"{
-//            let subLocationViewController = segue.destination as! SubLocationViewController
-//
-//            subLocationViewController.subPensionLocation = sendSubLocationData
-//            print("prepare : \(subLocationViewController.subPensionLocation)")
-//
-//        }
-//    }
-    
+    }    
 }
 
 extension LocationViewController: UITableViewDataSource{
