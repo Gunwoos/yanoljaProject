@@ -1,19 +1,18 @@
 //
-//  DetailFooterTableViewCell.swift
+//  PensionDetailTableViewCell.swift
 //  yanolja
 //
-//  Created by seob on 2018. 8. 15..
+//  Created by seob on 2018. 8. 23..
 //  Copyright © 2018년 seob. All rights reserved.
 //
 
 import UIKit
 
-class DetailFooterTableViewCell: UITableViewCell {
+class PensionInfoCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
