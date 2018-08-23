@@ -72,21 +72,8 @@ extension SubLocationViewController: UITableViewDataSource{
         return subPensionNum
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "subLocationCell", for: indexPath) as! SubLocationCell
-        tableView.rowHeight = 200
-        
-        let url = URL(string: subPensionData[indexPath.row].pensionImage)!
-        if let data = try? Data(contentsOf: url){
-            cell.pensionImage.image = UIImage(data: data)
-        }
-        else{
-            cell.pensionImage.image = UIImage(named: "bg02")
-        }
-        cell.pensionImage.contentMode = .scaleToFill
-        cell.pensionName.text = subPensionData[indexPath.row].pensionName
-        cell.pensionPrice.text = String(subPensionData[indexPath.row].pensionLowestPrice)
-        cell.pensionDiscountRate.text = String(subPensionData[indexPath.row].pensionDiscountRate)
-
+        let cell = UITableViewCell()
+       
         return cell
     }
 }
