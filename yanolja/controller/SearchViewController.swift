@@ -176,7 +176,7 @@ class SearchViewController: UIViewController {
         }
         self.PensionName.text = (sender.annotation?.title)!
         self.PensionPrice.text = (sender.annotation as? LocationInfo)?.pensionPrice!
-        
+//        self.PensionRoomOfNum.text = String((sender.annotation as! LocationInfo)?.pensionRoomNum!)
         let url = URL(string: ((sender.annotation as? LocationInfo)?.pensionImageURL)!)!
         print("\(url)")
         if let data = try? Data(contentsOf: url){
@@ -190,7 +190,7 @@ class SearchViewController: UIViewController {
     
 }
 
-extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource{
+extension SearchViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // 여기서 체크
         print(mapView.centerCoordinate)
@@ -199,6 +199,7 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
             mapViewLevel = 2
             addLocationAnnotations(mapViewLevel)
             print("mapViewLevel : \(mapViewLevel)")
+            PensionListTable.reloadData()
             
         }
         else if mapView.region.span.latitudeDelta < 1 && mapView.region.span.longitudeDelta < 1{
@@ -233,6 +234,8 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
         }
         return MKAnnotationView(frame: .zero)
     }
+    
+    
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if mapViewLevel == 0{
@@ -336,20 +339,63 @@ extension SearchViewController: MKMapViewDelegate, UITableViewDelegate, UITableV
                 self.LocationInfoView.isHidden = true
         })
     }
-    
+}
+
+extension SearchViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+extension SearchViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("mapView count : \(mapView.annotations.count)")
-        return mapView.annotations.count
+        if mapViewLevel == 2{
+            return pensionData.count
+        }
+        else if mapViewLevel == 1 {
+            return pensionData.count
+        }
+        else if mapViewLevel == 0 {
+            return pensionData.count
+        }
+        else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchViewCell
-        cell.pensionImageView.image = #imageLiteral(resourceName: "bg02")
+        
+        tableView.rowHeight = 300
+        
+        let url = URL(string: pensionData[indexPath.row].pensionImage)!
+        if let data = try? Data(contentsOf: url){
+            cell.pensionImageView.image = UIImage(data: data)
+        }
+        else{
+            cell.pensionImageView.image = UIImage(named: "bg02")
+        }
+        
         cell.pensionImageView.contentMode = .scaleToFill
-        cell.pensionLocation.text = "Pension Location"
-        cell.pensionName.text = "Pension Name"
-        cell.pensionRoomOfNub.text = "예약 가능한 객실 2개"
-        cell.pensionPrice.text = "Pension Price"
+        cell.pensionLocation.text = pensionData[indexPath.row].pensionSubLocation
+        let findLocation = CLLocation(
+            latitude: pensionData[indexPath.row].pensionLatitude,
+            longitude: pensionData[indexPath.row].pensionLongitude
+        )
+        let geocoder = CLGeocoder()
+        let local = Locale(identifier: "Ko-kr")
+        geocoder.reverseGeocodeLocation(findLocation, preferredLocale: local) { (placemakers, error) in
+            if let address: [CLPlacemark] = placemakers {
+                if let name: String = address.last?.name {
+                    cell.pensionLocation.text = name
+                }
+            }
+        }
+        cell.pensionLocation.textColor = UIColor.lightGray
+        cell.pensionName.text = pensionData[indexPath.row].pensionName
+        cell.pensionRoomOfNub.text = "예약가능한 객실 4개"
+        cell.pensionRoomOfNub.textColor = UIColor.lightGray
+        cell.pensionPrice.text = "\(pensionData[indexPath.row].pensionLowestPrice)~"
         
         return cell
     }

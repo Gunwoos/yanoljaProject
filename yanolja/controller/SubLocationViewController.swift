@@ -15,9 +15,13 @@ class SubLocationViewController: UIViewController {
     var subPensionNum = 0
     var subPensionLocation = ""
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.view.backgroundColor = .white
+        setData(sublocation: subPensionLocation)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +29,10 @@ class SubLocationViewController: UIViewController {
         
     }
 
+    
     func setData(sublocation: String){
+        print("setData")
+        print("\(sublocation)")
         for i in 0...pensionLocationData.count-1{
             for j in 0...pensionLocationData[i].sublocations.count-1{
                 if pensionLocationData[i].sublocations[j].sublocationNum == sublocation{
@@ -38,13 +45,20 @@ class SubLocationViewController: UIViewController {
                 }
             }
         }
+        
         for i in 0...pensionData.count-1{
             if pensionData[i].pensionSubLocation == sublocation{
                 subPensionData.append(pensionData[i])
                 subPensionNum = subPensionNum + 1
             }
         }
-        subLocationTable.reloadData()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sendSubLocationPensionForMapKit"{
+            let subLocationMapViewController = segue.destination as! SubLocationMapViewController
+            subLocationMapViewController.subPensionData = self.subPensionData
+        }
+        
     }
 
 }
@@ -59,6 +73,7 @@ extension SubLocationViewController: UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subLocationCell", for: indexPath) as! SubLocationCell
+        tableView.rowHeight = 200
         
         let url = URL(string: subPensionData[indexPath.row].pensionImage)!
         if let data = try? Data(contentsOf: url){
