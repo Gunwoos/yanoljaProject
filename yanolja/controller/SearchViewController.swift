@@ -356,6 +356,7 @@ extension SearchViewController: MKMapViewDelegate{
 
 extension SearchViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let row = indexPath.row
         
         pensionDetailDataArray.removeAll()
@@ -369,6 +370,10 @@ extension SearchViewController: UITableViewDelegate{
         //fetchPensionDetail(subLocation: sublocationNum, pk: idx)
         
         self.pushVC("PensionDetailViewController", storyboard: "Main", animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        tableView.rowHeight = 280
     }
 }
 

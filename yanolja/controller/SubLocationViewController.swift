@@ -92,6 +92,7 @@ extension SubLocationViewController: UITableViewDataSource{
         return subPensionNum
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+ 
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
         tableView.rowHeight = 280
         var nprice = 0

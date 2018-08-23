@@ -8,12 +8,40 @@
 
 import UIKit
 
+class LodingView: UIView {
+    
+    let activityIndicator = UIActivityIndicatorView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .white
+        self.alpha = 0.8
+        let size = CGSize(width: 50, height: 50)
+        activityIndicator.frame = CGRect(x: frame.midX - (size.width / 2),
+                                         y: frame.midY - (size.height / 2),
+                                         width: size.width,
+                                         height: size.height)
+        
+        addSubview(activityIndicator)
+        
+        activityIndicator.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        activityIndicator.layer.cornerRadius = size.height / 2
+        activityIndicator.color = UIColor.black
+        activityIndicator.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        activityIndicator.startAnimating()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
 
 class HomeViewController: BaseViewController, HomeCellDelegate  {
   
 
     @IBOutlet weak var pensionTableView: UITableView!
-    
+    var lodingView: LodingView!
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -22,6 +50,12 @@ class HomeViewController: BaseViewController, HomeCellDelegate  {
         let nib = UINib.init(nibName: "MainTableViewCell", bundle: nil)
         self.pensionTableView.register(nib, forCellReuseIdentifier: "MainTableViewCell")
         setHomeTitle()
+        
+        
+        lodingView = LodingView(frame: view.frame)
+        let window = UIApplication.shared.keyWindow
+        window?.addSubview(lodingView)
+        
         fetchPensionAPI()
 //        let refreshControl = UIRefreshControl()
 //        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
@@ -36,6 +70,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate  {
         }
         pensionTableView.reloadData()
     }
+    
     
     
     func setHomeTitle(){
@@ -56,6 +91,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate  {
     
     // MARK: - 펜션 정보 파싱 함수
     func fetchPensionAPI(){
+ 
         let url = URL(string: urlString)!
         
         let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -84,6 +120,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate  {
                     pensionNum = pensionNum + pensionLocation.pensionOfNum
                 }
                 self.fetchPensionDataAPI()
+ 
             } catch {
                 print("error : \(error.localizedDescription)")
             }
@@ -94,6 +131,7 @@ class HomeViewController: BaseViewController, HomeCellDelegate  {
     
     // MARK: - 모든 펜션의 기본 정보를 pensionData 에 저장
     func fetchPensionDataAPI(){
+ 
         for i in 0...pensionLocationData.count - 1{
             for j in 0...pensionLocationData[i].sublocations.count - 1{
                 let pensionSubLocationNum = pensionUrlString +  pensionLocationData[i].sublocations[j].sublocationNum + "/"
@@ -119,10 +157,13 @@ class HomeViewController: BaseViewController, HomeCellDelegate  {
                             )
                             
                             pensionData.append(Pension)
+ 
                         }
+                        
                         DispatchQueue.global().async {
                             DispatchQueue.main.async {
-                                print("home view data reload")
+                                self.lodingView.activityIndicator.stopAnimating()
+                                self.lodingView.removeFromSuperview()
                                 self.pensionTableView.reloadData()
                             }
                         }
