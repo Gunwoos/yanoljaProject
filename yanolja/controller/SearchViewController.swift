@@ -33,7 +33,7 @@ final class LocationInfo: MKPointAnnotation{
  제주도 33.414339, 126.806340
  */
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
     
     @IBOutlet private weak var mapView: MKMapView!
     @IBOutlet private weak var LocationInfoView: UIView!
@@ -356,7 +356,19 @@ extension SearchViewController: MKMapViewDelegate{
 
 extension SearchViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
         
+        pensionDetailDataArray.removeAll()
+        
+        let idx = pensionData[row].pensionPk
+        let sublocationNum = pensionData[row].pensionSubLocation
+        
+        m_appDelegate.m_pensionInfo.pk = idx
+        m_appDelegate.m_pensionInfo.sublocation = sublocationNum
+        
+        //fetchPensionDetail(subLocation: sublocationNum, pk: idx)
+        
+        self.pushVC("PensionDetailViewController", storyboard: "Main", animated: true)
     }
 }
 
