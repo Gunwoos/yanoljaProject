@@ -9,25 +9,25 @@
 import UIKit
 
 
-class HomeViewController: BaseViewController, HomeCellDelegate{
-    
+class HomeViewController: BaseViewController, HomeCellDelegate  {
+  
 
     @IBOutlet weak var pensionTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
          let token = UserDefaults.standard.string(forKey : "token") ?? ""
         print("\n ----------- [token: \(token)] ----------- \n")
         let nib = UINib.init(nibName: "MainTableViewCell", bundle: nil)
         self.pensionTableView.register(nib, forCellReuseIdentifier: "MainTableViewCell")
         setHomeTitle()
         fetchPensionAPI()
-        let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
-        refreshControl.tintColor = .blue
-        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-        pensionTableView.refreshControl = refreshControl
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+//        refreshControl.tintColor = .blue
+//        refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+//        pensionTableView.refreshControl = refreshControl
     }
     
     @objc func reloadData() {
@@ -146,13 +146,15 @@ class HomeViewController: BaseViewController, HomeCellDelegate{
 // MARK :- UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt")
-        
         
         let row = indexPath.row
-        print("Row: \(row)")
+      
         
-        self.pushVC("PensionDetailViewController", storyboard: "Main", animated: true)
+        m_appDelegate.m_pensionInfo.pk = pensionData[row].pensionPk
+        m_appDelegate.m_pensionInfo.sublocation = pensionData[row].pensionSubLocation
+ 
+        
+         self.pushVC("PensionDetailViewController", storyboard: "Main", animated: true)
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {

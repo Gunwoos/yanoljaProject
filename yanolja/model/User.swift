@@ -23,6 +23,18 @@ struct GetUserInfo: Decodable {
     let token : String
 }
 
+class PensionInfo {
+    var pk : Int = 0
+    var sublocation : String?
+    
+    func paser(_ object: AnyObject) {
+        let global = Global()
+        self.pk = global.getIntValue(object, key: "pk")
+        self.sublocation = global.getStringValue(object, key: "sub_location_no")
+    }
+}
+
+
 class UserInfo {
     
     var username : String? 
