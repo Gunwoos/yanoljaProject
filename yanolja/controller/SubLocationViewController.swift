@@ -71,8 +71,8 @@ extension SubLocationViewController: UITableViewDelegate{
         
         pensionDetailDataArray.removeAll()
         
-        let idx = pensionData[row].pensionPk
-        let sublocationNum = pensionData[row].pensionSubLocation
+        let idx = subPensionData[row].pensionPk
+        let sublocationNum = subPensionData[row].pensionSubLocation
         
         m_appDelegate.m_pensionInfo.pk = idx
         m_appDelegate.m_pensionInfo.sublocation = sublocationNum
@@ -92,32 +92,15 @@ extension SubLocationViewController: UITableViewDataSource{
         return subPensionNum
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-
-       
-
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "subLocationCell", for: indexPath) as! SubLocationCell
-//        tableView.rowHeight = 200
-//
-//        let url = URL(string: subPensionData[indexPath.row].pensionImage)!
-//        if let data = try? Data(contentsOf: url){
-//            cell.pensionImage.image = UIImage(data: data)
-//        }
-//        else{
-//            cell.pensionImage.image = UIImage(named: "bg02")
-//        }
-//        cell.pensionImage.contentMode = .scaleToFill
-//        cell.pensionName.text = subPensionData[indexPath.row].pensionName
-//        cell.pensionPrice.text = String(subPensionData[indexPath.row].pensionLowestPrice)
-//        cell.pensionDiscountRate.text = String(subPensionData[indexPath.row].pensionDiscountRate)
+ 
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
         tableView.rowHeight = 280
         var nprice = 0
         var dprice = 0
-        nprice = pensionData[indexPath.row].pensionLowestPrice / 100 * pensionData[indexPath.row].pensionDiscountRate
-        dprice = pensionData[indexPath.row].pensionLowestPrice  + nprice
+        nprice = subPensionData[indexPath.row].pensionLowestPrice / 100 * subPensionData[indexPath.row].pensionDiscountRate
+        dprice = subPensionData[indexPath.row].pensionLowestPrice  + nprice
         
-        let url = URL(string: pensionData[indexPath.row].pensionImage)!
+        let url = URL(string: subPensionData[indexPath.row].pensionImage)!
         if let data = try? Data(contentsOf: url){
             cell.ImageView.image = UIImage(data: data)
         }
@@ -126,9 +109,9 @@ extension SubLocationViewController: UITableViewDataSource{
         }
         
         cell.ImageView.contentMode = .scaleToFill
-        cell.TitleLabel.text = pensionData[indexPath.row].pensionName
-        cell.DiscountLabel.text = "\(pensionData[indexPath.row].pensionDiscountRate) %"
-        cell.PriceLabel.text = "\(Global().getFormattedPrice(pensionData[indexPath.row].pensionLowestPrice)!)원~"
+        cell.TitleLabel.text = subPensionData[indexPath.row].pensionName
+        cell.DiscountLabel.text = "\(subPensionData[indexPath.row].pensionDiscountRate) %"
+        cell.PriceLabel.text = "\(Global().getFormattedPrice(subPensionData[indexPath.row].pensionLowestPrice)!)원~"
         
         cell.nPriceLabel.text = "\(Global().getFormattedPrice(dprice)!)원"
 
