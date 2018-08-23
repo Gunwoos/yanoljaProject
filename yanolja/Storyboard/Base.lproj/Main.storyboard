@@ -754,13 +754,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gwP-QG-v2b">
-                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <connections>
                                     <outlet property="delegate" destination="XcC-7Z-iy9" id="0Zg-Ez-XGD"/>
                                 </connections>
                             </mapView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V6y-bg-6D4">
-                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="300" id="bMh-iN-udx" customClass="SearchViewCell" customModule="yanolja" customModuleProvider="target">
@@ -779,7 +779,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pension Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvu-YY-8vy">
                                                     <rect key="frame" x="20" y="159.5" width="131" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pension Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWS-5s-4Yb">
@@ -791,7 +791,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pension Room of Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vue-8k-80g">
                                                     <rect key="frame" x="20" y="222" width="195" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pension Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTS-IS-Orn">
@@ -800,23 +800,41 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PensionDiscountRate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlk-IN-Ohi">
+                                                    <rect key="frame" x="179.5" y="248" width="175.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.060251623640000002" blue="0.28663977140000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pension Dprice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5l0-T1-etE">
+                                                    <rect key="frame" x="131.5" y="248" width="116" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HWS-5s-4Yb" firstAttribute="top" secondItem="Wvu-YY-8vy" secondAttribute="bottom" constant="5" id="4BB-Q8-SZo"/>
                                                 <constraint firstAttribute="bottom" secondItem="kj8-TT-Jj2" secondAttribute="bottom" constant="150" id="6WN-Pu-52f"/>
                                                 <constraint firstItem="Wvu-YY-8vy" firstAttribute="leading" secondItem="kj8-TT-Jj2" secondAttribute="leading" id="9uK-QF-yhH"/>
+                                                <constraint firstItem="Mlk-IN-Ohi" firstAttribute="centerY" secondItem="qTS-IS-Orn" secondAttribute="centerY" id="BqU-yv-rLX"/>
                                                 <constraint firstItem="qTS-IS-Orn" firstAttribute="leading" secondItem="kj8-TT-Jj2" secondAttribute="leading" id="EjX-Nm-xhw"/>
                                                 <constraint firstAttribute="trailing" secondItem="kj8-TT-Jj2" secondAttribute="trailing" constant="20" id="IEx-kD-8bX"/>
                                                 <constraint firstItem="HWS-5s-4Yb" firstAttribute="leading" secondItem="kj8-TT-Jj2" secondAttribute="leading" id="Kjv-O4-mJN"/>
                                                 <constraint firstItem="kj8-TT-Jj2" firstAttribute="top" secondItem="Ubs-Za-jZT" secondAttribute="top" constant="20" id="MqR-8P-zUf"/>
+                                                <constraint firstItem="Mlk-IN-Ohi" firstAttribute="trailing" secondItem="kj8-TT-Jj2" secondAttribute="trailing" id="NPg-7v-Qhr"/>
+                                                <constraint firstItem="5l0-T1-etE" firstAttribute="centerY" secondItem="qTS-IS-Orn" secondAttribute="centerY" id="O2E-zP-Hat"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qTS-IS-Orn" secondAttribute="bottom" constant="20" id="TnO-Yf-3HY"/>
                                                 <constraint firstItem="qTS-IS-Orn" firstAttribute="top" secondItem="vue-8k-80g" secondAttribute="bottom" constant="5" id="d6V-Lu-bUk"/>
                                                 <constraint firstItem="vue-8k-80g" firstAttribute="leading" secondItem="kj8-TT-Jj2" secondAttribute="leading" id="dxl-F7-eUD"/>
                                                 <constraint firstItem="kj8-TT-Jj2" firstAttribute="leading" secondItem="Ubs-Za-jZT" secondAttribute="leading" constant="20" id="maw-4Y-sYc"/>
+                                                <constraint firstItem="5l0-T1-etE" firstAttribute="leading" secondItem="qTS-IS-Orn" secondAttribute="trailing" id="pt1-Uh-eeh"/>
                                                 <constraint firstItem="Wvu-YY-8vy" firstAttribute="top" secondItem="kj8-TT-Jj2" secondAttribute="bottom" constant="10" id="qyM-HY-TEv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="pensionDiscountRate" destination="Mlk-IN-Ohi" id="368-rN-unT"/>
+                                            <outlet property="pensionDprice" destination="5l0-T1-etE" id="fio-lH-pW8"/>
                                             <outlet property="pensionImageView" destination="kj8-TT-Jj2" id="DIp-jR-olh"/>
                                             <outlet property="pensionLocation" destination="Wvu-YY-8vy" id="LSQ-ir-uZS"/>
                                             <outlet property="pensionName" destination="HWS-5s-4Yb" id="X0c-8H-8Xo"/>
@@ -830,10 +848,6 @@
                                     <outlet property="delegate" destination="XcC-7Z-iy9" id="bIZ-4o-nr4"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="E40-IX-TVZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nG5-8T-iaY">
                                 <rect key="frame" x="30" y="428" width="315" height="170"/>
                                 <subviews>
@@ -847,7 +861,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pension Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsL-Yg-BYh">
                                         <rect key="frame" x="10" y="20" width="131" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pension Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cw-hQ-7qR">
@@ -865,7 +879,19 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pension Room Num" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVd-Kp-LZD">
                                         <rect key="frame" x="10" y="98" width="150" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PensionDprice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmO-bF-0t3">
+                                        <rect key="frame" x="114" y="129" width="111" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PensionDiscountRate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOx-30-cMy">
+                                        <rect key="frame" x="129" y="129" width="176" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="1" green="0.060251623640000002" blue="0.28663977140000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -874,9 +900,13 @@
                                     <constraint firstItem="hsL-Yg-BYh" firstAttribute="top" secondItem="nG5-8T-iaY" secondAttribute="top" constant="20" id="71b-N4-Z5O"/>
                                     <constraint firstItem="aVd-Kp-LZD" firstAttribute="leading" secondItem="nG5-8T-iaY" secondAttribute="leading" constant="10" id="CJp-jh-vd4"/>
                                     <constraint firstAttribute="bottom" secondItem="rrS-nW-whl" secondAttribute="bottom" constant="20" id="DpL-1B-Mt2"/>
+                                    <constraint firstItem="DmO-bF-0t3" firstAttribute="centerY" secondItem="rrS-nW-whl" secondAttribute="centerY" id="HzO-29-kTR"/>
+                                    <constraint firstAttribute="trailing" secondItem="VOx-30-cMy" secondAttribute="trailing" constant="10" id="Kph-7B-zrN"/>
                                     <constraint firstItem="hsL-Yg-BYh" firstAttribute="leading" secondItem="nG5-8T-iaY" secondAttribute="leading" constant="10" id="M8Y-eb-Hpm"/>
                                     <constraint firstItem="rrS-nW-whl" firstAttribute="top" secondItem="aVd-Kp-LZD" secondAttribute="bottom" constant="10" id="MWS-gc-CvH"/>
+                                    <constraint firstItem="VOx-30-cMy" firstAttribute="centerY" secondItem="rrS-nW-whl" secondAttribute="centerY" id="O7G-QU-hcO"/>
                                     <constraint firstItem="rrS-nW-whl" firstAttribute="leading" secondItem="nG5-8T-iaY" secondAttribute="leading" constant="10" id="OVH-xC-STP"/>
+                                    <constraint firstItem="DmO-bF-0t3" firstAttribute="leading" secondItem="rrS-nW-whl" secondAttribute="trailing" id="PUg-Vg-2HA"/>
                                     <constraint firstAttribute="height" constant="170" id="Pq2-XY-A8Q"/>
                                     <constraint firstAttribute="trailing" secondItem="Vmj-2K-By2" secondAttribute="trailing" constant="10" id="Rjq-Cz-A8m"/>
                                     <constraint firstItem="5cw-hQ-7qR" firstAttribute="leading" secondItem="nG5-8T-iaY" secondAttribute="leading" constant="10" id="eGg-3M-LMR"/>
@@ -900,18 +930,15 @@
                         <constraints>
                             <constraint firstItem="ys1-16-iV9" firstAttribute="trailing" secondItem="nG5-8T-iaY" secondAttribute="trailing" constant="30" id="1sR-QS-SR7"/>
                             <constraint firstItem="ys1-16-iV9" firstAttribute="bottom" secondItem="V6y-bg-6D4" secondAttribute="bottom" id="3k2-dW-T4A"/>
-                            <constraint firstItem="gwP-QG-v2b" firstAttribute="top" secondItem="E40-IX-TVZ" secondAttribute="bottom" id="43d-aA-9KE"/>
                             <constraint firstItem="nG5-8T-iaY" firstAttribute="leading" secondItem="ys1-16-iV9" secondAttribute="leading" constant="30" id="4yt-2H-zTS"/>
+                            <constraint firstItem="gwP-QG-v2b" firstAttribute="top" secondItem="ys1-16-iV9" secondAttribute="top" id="79h-ZA-Ba9"/>
                             <constraint firstItem="ys1-16-iV9" firstAttribute="bottom" secondItem="nG5-8T-iaY" secondAttribute="bottom" constant="20" id="GCi-QU-chX"/>
-                            <constraint firstItem="V6y-bg-6D4" firstAttribute="top" secondItem="E40-IX-TVZ" secondAttribute="bottom" id="Jrx-4g-mai"/>
-                            <constraint firstItem="E40-IX-TVZ" firstAttribute="leading" secondItem="ys1-16-iV9" secondAttribute="leading" id="M0Q-27-9c2"/>
                             <constraint firstItem="gwP-QG-v2b" firstAttribute="leading" secondItem="ys1-16-iV9" secondAttribute="leading" id="M8b-5w-h3Z"/>
                             <constraint firstItem="ys1-16-iV9" firstAttribute="trailing" secondItem="gwP-QG-v2b" secondAttribute="trailing" id="Mde-yX-I0L"/>
                             <constraint firstItem="nG5-8T-iaY" firstAttribute="top" secondItem="ys1-16-iV9" secondAttribute="bottom" constant="-190" id="YK9-1N-15B"/>
                             <constraint firstItem="ys1-16-iV9" firstAttribute="bottom" secondItem="gwP-QG-v2b" secondAttribute="bottom" id="YYb-jH-VcZ"/>
                             <constraint firstItem="ys1-16-iV9" firstAttribute="trailing" secondItem="V6y-bg-6D4" secondAttribute="trailing" id="i0g-pM-gPs"/>
-                            <constraint firstItem="E40-IX-TVZ" firstAttribute="top" secondItem="ys1-16-iV9" secondAttribute="top" id="iXG-H2-nHF"/>
-                            <constraint firstItem="E40-IX-TVZ" firstAttribute="trailing" secondItem="ys1-16-iV9" secondAttribute="trailing" id="isJ-Xs-f91"/>
+                            <constraint firstItem="V6y-bg-6D4" firstAttribute="top" secondItem="ys1-16-iV9" secondAttribute="top" id="meR-g6-cbm"/>
                             <constraint firstItem="V6y-bg-6D4" firstAttribute="leading" secondItem="ys1-16-iV9" secondAttribute="leading" id="sJ8-vc-E5p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ys1-16-iV9"/>
@@ -919,6 +946,8 @@
                     <navigationItem key="navigationItem" id="amr-n6-hqg"/>
                     <connections>
                         <outlet property="LocationInfoView" destination="nG5-8T-iaY" id="cV0-cq-9Cq"/>
+                        <outlet property="PensionDiscountRate" destination="VOx-30-cMy" id="ogo-vw-Abw"/>
+                        <outlet property="PensionDprice" destination="DmO-bF-0t3" id="mWR-Cj-l00"/>
                         <outlet property="PensionImage" destination="Vmj-2K-By2" id="7Pz-11-YXi"/>
                         <outlet property="PensionListTable" destination="V6y-bg-6D4" id="wOJ-pZ-Dj3"/>
                         <outlet property="PensionLocation" destination="hsL-Yg-BYh" id="SMd-kd-ROP"/>

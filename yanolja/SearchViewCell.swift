@@ -21,6 +21,9 @@ class SearchViewCell: UITableViewCell {
     @IBOutlet weak var pensionName: UILabel!
     @IBOutlet weak var pensionRoomOfNub: UILabel!
     @IBOutlet weak var pensionPrice: UILabel!
+    @IBOutlet weak var pensionDprice: UILabel!
+    @IBOutlet weak var pensionDiscountRate: UILabel!
+    
     
     
     
