@@ -19,6 +19,7 @@ class SearchEmtpyRoomViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var peopleNumberLabel: UILabel!
+    var defaultPeopleNum = 2
     
     @IBOutlet weak var searchButton: UIButton!
     
@@ -55,8 +56,21 @@ class SearchEmtpyRoomViewController: UIViewController {
     
     @IBAction func SelectLocationAction(_ sender: UIButton) {
     }
-    
-    @IBAction func SearchButtonAction(_ sender: UIButton) {
+    @IBAction func plusButtonAction(_ sender: UIButton){
+        self.defaultPeopleNum = self.defaultPeopleNum + 1
+        self.peopleNumberLabel.text = "\(self.defaultPeopleNum)명"
+    }
+    @IBAction func minusButtonAction(_ sender: UIButton){
+        guard defaultPeopleNum > 1 else { return }
+        self.defaultPeopleNum = self.defaultPeopleNum - 1
+        self.peopleNumberLabel.text = "\(self.defaultPeopleNum)명"
+    }
+    @IBAction func SearchButtonAction(_ sender: UIButton){
+        
+    }
+    @IBAction func resetOptionAction(_ sender: UIBarButtonItem){
+        self.locationLabel.text = "어디로 놀러갈까요?"
+        self.peopleNumberLabel.text = "2명"
     }
     
    
