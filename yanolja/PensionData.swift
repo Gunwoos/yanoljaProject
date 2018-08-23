@@ -253,6 +253,7 @@ let pensionUrlString = "\(API.baseURL)/location/"
 var pensionNum = 0
 var pensionLocationData = Array<PensionLocationData>()
 var pensionData = Array<PensionList>()
+var likedPensionData = Array<PensionList>()
 var pensionDetailDataArray = Array<pensionDetailData>()
 
 // MARK: - 펜션의 상세 정보를 불러오는 함수
