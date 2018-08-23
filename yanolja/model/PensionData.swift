@@ -257,72 +257,73 @@ var likedPensionData = Array<PensionList>()
 var pensionDetailDataArray = Array<pensionDetailData>()
 
 // MARK: - 펜션의 상세 정보를 불러오는 함수
-func fetchPensionDetail(subLocation: String, pk: Int){
-    if pensionData.count == pensionNum{
-        let pensionDetailURLString = pensionUrlString + subLocation + "/" + String(pk) + "/"
-        let pensionDetailURL = URL(string: pensionDetailURLString)!
-        
-        let pensionDetailDataTask = URLSession.shared.dataTask(with: pensionDetailURL){ (data, response, error ) in
-            guard let response = response as? HTTPURLResponse, let data = data else{
-                print("error : response, data error")
-                return
-            }
-            guard 200..<400 ~= response.statusCode else {
-                print("sever error : \(pensionDetailURLString) ")
-                return
-            }
-            do{
-                let pensionDetail = try JSONDecoder().decode(PensionDetailParsing.self, from: data)
-                var pensionRoomListData = Array<pensionDetailData.pensionRoomDetail>()
-                
-                for i in 0...pensionDetail.pensionRoom.count-1{
-                    let pensionRoomData = pensionDetailData.pensionRoomDetail.init(
-                        roomPk: pensionDetail.pensionRoom[i].roomPk,
-                        roomName: pensionDetail.pensionRoom[i].roomName,
-                        roomSize: pensionDetail.pensionRoom[i].roomSize,
-                        roomNormalNumPeople: pensionDetail.pensionRoom[i].roomNormalNumPeople,
-                        roomMaxNumPeople: pensionDetail.pensionRoom[i].roomMaxNumPeople,
-                        roomPrice: pensionDetail.pensionRoom[i].roomPrice,
-                        roomStructure: pensionDetail.pensionRoom[i].roomStructure,
-                        roomEquipments: pensionDetail.pensionRoom[i].roomEquipments,
-                        roomImages: pensionDetail.pensionRoom[i].roomImages
-                    )
-                    pensionRoomListData.append(pensionRoomData)
-                }
-                
-                let pension = pensionDetailData.init(
-                    pk: pensionDetail.pk,
-                    pensionName: pensionDetail.pensionName,
-                    pensionImage: pensionDetail.pensionImage,
-                    pensionPrice: pensionDetail.pensionPrice,
-                    pensionDiscountRate: pensionDetail.pensionDiscountRate,
-                    pensionLatitude: pensionDetail.pensionLatitude,
-                    pensionLongitude: pensionDetail.pensionLongitude,
-                    pensionAddress:  pensionDetail.pensionAddress,
-                    pensionCheckInTime: pensionDetail.pensionCheckInTime,
-                    pensionCheckOutTime: pensionDetail.pensionCheckOutTime,
-                    pensionPickUp: pensionDetail.pensionPickUp,
-                    pensionRoomNumber: pensionDetail.pensionRoomNumber,
-                    pensionInfo: pensionDetail.pensionInfo,
-                    pensionTheme: pensionDetail.pensionTheme,
-                    pensionCheckInOutDetail: pensionDetail.pensionCheckInOutDetail,
-                    pensionPickUpDetail: pensionDetail.pensionPickUpDetail,
-                    pensionGretting: pensionDetail.pensionGretting,
-                    pensionPrecations: pensionDetail.pensionPrecations,
-                    pensionImages: pensionDetail.pensionImages,
-                    pensionRoom: pensionRoomListData
-                )
-                pensionDetailDataArray.append(pension)
-                
-            } catch {
-                print("error : \(error.localizedDescription)")
-                print("error url : \(pensionDetailURLString)")
-            }
-        }
-        pensionDetailDataTask.resume()
-    }
-}
+//func fetchPensionDetail(subLocation: String, pk: Int){
+//    if pensionData.count == pensionNum{
+//        let pensionDetailURLString = pensionUrlString + subLocation + "/" + String(pk) + "/"
+//        let pensionDetailURL = URL(string: pensionDetailURLString)!
+//        
+//        let pensionDetailDataTask = URLSession.shared.dataTask(with: pensionDetailURL){ (data, response, error ) in
+//            guard let response = response as? HTTPURLResponse, let data = data else{
+//                print("error : response, data error")
+//                return
+//            }
+//            guard 200..<400 ~= response.statusCode else {
+//                print("sever error : \(pensionDetailURLString) ")
+//                return
+//            }
+//            do{
+//                let pensionDetail = try JSONDecoder().decode(PensionDetailParsing.self, from: data)
+//                var pensionRoomListData = Array<pensionDetailData.pensionRoomDetail>()
+//                
+//                for i in 0...pensionDetail.pensionRoom.count-1{
+//                    let pensionRoomData = pensionDetailData.pensionRoomDetail.init(
+//                        roomPk: pensionDetail.pensionRoom[i].roomPk,
+//                        roomName: pensionDetail.pensionRoom[i].roomName,
+//                        roomSize: pensionDetail.pensionRoom[i].roomSize,
+//                        roomNormalNumPeople: pensionDetail.pensionRoom[i].roomNormalNumPeople,
+//                        roomMaxNumPeople: pensionDetail.pensionRoom[i].roomMaxNumPeople,
+//                        roomPrice: pensionDetail.pensionRoom[i].roomPrice,
+//                        roomStructure: pensionDetail.pensionRoom[i].roomStructure,
+//                        roomEquipments: pensionDetail.pensionRoom[i].roomEquipments,
+//                        roomImages: pensionDetail.pensionRoom[i].roomImages
+//                    )
+//                    pensionRoomListData.append(pensionRoomData)
+//                }
+//                
+//                let pension = pensionDetailData.init(
+//                    pk: pensionDetail.pk,
+//                    pensionName: pensionDetail.pensionName,
+//                    pensionImage: pensionDetail.pensionImage,
+//                    pensionPrice: pensionDetail.pensionPrice,
+//                    pensionDiscountRate: pensionDetail.pensionDiscountRate,
+//                    pensionLatitude: pensionDetail.pensionLatitude,
+//                    pensionLongitude: pensionDetail.pensionLongitude,
+//                    pensionAddress:  pensionDetail.pensionAddress,
+//                    pensionCheckInTime: pensionDetail.pensionCheckInTime,
+//                    pensionCheckOutTime: pensionDetail.pensionCheckOutTime,
+//                    pensionPickUp: pensionDetail.pensionPickUp,
+//                    pensionRoomNumber: pensionDetail.pensionRoomNumber,
+//                    pensionInfo: pensionDetail.pensionInfo,
+//                    pensionTheme: pensionDetail.pensionTheme,
+//                    pensionCheckInOutDetail: pensionDetail.pensionCheckInOutDetail,
+//                    pensionPickUpDetail: pensionDetail.pensionPickUpDetail,
+//                    pensionGretting: pensionDetail.pensionGretting,
+//                    pensionPrecations: pensionDetail.pensionPrecations,
+//                    pensionImages: pensionDetail.pensionImages,
+//                    pensionRoom: pensionRoomListData
+//                )
+//                pensionDetailDataArray.append(pension)
+//                
+//            } catch {
+//                print("error : \(error.localizedDescription)")
+//                print("error url : \(pensionDetailURLString)")
+//            }
+//        }
+//        pensionDetailDataTask.resume()
+//    }
+//}
 
+ 
 
 
 

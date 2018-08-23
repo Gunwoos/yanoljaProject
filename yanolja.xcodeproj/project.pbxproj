@@ -18,8 +18,10 @@
 		2A2AF027212D389B00FAEF25 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A2AF026212D389B00FAEF25 /* SQLite.framework */; };
 		2A322F88212EBB0C00ADF002 /* PensionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A322F86212EBB0C00ADF002 /* PensionInfoCell.swift */; };
 		2A322F89212EBB0C00ADF002 /* PensionInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A322F87212EBB0C00ADF002 /* PensionInfoCell.xib */; };
-		2A322F8B212EBB5900ADF002 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A322F8A212EBB5900ADF002 /* DetailHeaderView.swift */; };
-		2A322F8D212EBC2B00ADF002 /* PensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A322F8C212EBC2B00ADF002 /* PensionViewController.swift */; };
+		2A322F96212F254300ADF002 /* PensionCheckOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A322F94212F254300ADF002 /* PensionCheckOutCell.swift */; };
+		2A322F97212F254300ADF002 /* PensionCheckOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A322F95212F254300ADF002 /* PensionCheckOutCell.xib */; };
+		2A322F9A212F2A2800ADF002 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A322F98212F2A2800ADF002 /* ThemeCell.swift */; };
+		2A322F9B212F2A2800ADF002 /* ThemeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A322F99212F2A2800ADF002 /* ThemeCell.xib */; };
 		2A331579212A5D680035A43A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A331578212A5D680035A43A /* Constants.swift */; };
 		2A33157E212A5EE60035A43A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33157D212A5EE60035A43A /* User.swift */; };
 		2A331580212A61280035A43A /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33157F212A61280035A43A /* Manager.swift */; };
@@ -79,8 +81,10 @@
 		2A2AF026212D389B00FAEF25 /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A322F86212EBB0C00ADF002 /* PensionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PensionInfoCell.swift; path = yanolja/controller/Main/Detail/PensionInfoCell.swift; sourceTree = SOURCE_ROOT; };
 		2A322F87212EBB0C00ADF002 /* PensionInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PensionInfoCell.xib; path = yanolja/controller/Main/Detail/PensionInfoCell.xib; sourceTree = SOURCE_ROOT; };
-		2A322F8A212EBB5900ADF002 /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
-		2A322F8C212EBC2B00ADF002 /* PensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PensionViewController.swift; sourceTree = "<group>"; };
+		2A322F94212F254300ADF002 /* PensionCheckOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PensionCheckOutCell.swift; sourceTree = "<group>"; };
+		2A322F95212F254300ADF002 /* PensionCheckOutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PensionCheckOutCell.xib; sourceTree = "<group>"; };
+		2A322F98212F2A2800ADF002 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
+		2A322F99212F2A2800ADF002 /* ThemeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeCell.xib; sourceTree = "<group>"; };
 		2A331578212A5D680035A43A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2A33157D212A5EE60035A43A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = yanolja/model/User.swift; sourceTree = SOURCE_ROOT; };
 		2A33157F212A61280035A43A /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
@@ -202,7 +206,6 @@
 				2A1C4D55211FCF4200D7E051 /* PensionDetailViewController.swift */,
 				2A33158A212A87980035A43A /* MainTableViewCell.swift */,
 				2A33158B212A87980035A43A /* MainTableViewCell.xib */,
-				2A322F8C212EBC2B00ADF002 /* PensionViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -327,7 +330,10 @@
 				2A1C4D66211FFE4900D7E051 /* DetailTableViewCell.xib */,
 				2A322F86212EBB0C00ADF002 /* PensionInfoCell.swift */,
 				2A322F87212EBB0C00ADF002 /* PensionInfoCell.xib */,
-				2A322F8A212EBB5900ADF002 /* DetailHeaderView.swift */,
+				2A322F94212F254300ADF002 /* PensionCheckOutCell.swift */,
+				2A322F95212F254300ADF002 /* PensionCheckOutCell.xib */,
+				2A322F98212F2A2800ADF002 /* ThemeCell.swift */,
+				2A322F99212F2A2800ADF002 /* ThemeCell.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -428,11 +434,13 @@
 				2AB0EE402114015700A3C4BF /* Login.storyboard in Resources */,
 				2A322F89212EBB0C00ADF002 /* PensionInfoCell.xib in Resources */,
 				2A836910212BE14200712520 /* GoogleService-Info.plist in Resources */,
+				2A322F9B212F2A2800ADF002 /* ThemeCell.xib in Resources */,
 				2AB0EE342114011800A3C4BF /* LaunchScreen.storyboard in Resources */,
 				2AB0EE312114011800A3C4BF /* Assets.xcassets in Resources */,
 				2A1C4D68211FFE4900D7E051 /* DetailTableViewCell.xib in Resources */,
 				2AB0EE2F2114011600A3C4BF /* Main.storyboard in Resources */,
 				2A33158D212A87980035A43A /* MainTableViewCell.xib in Resources */,
+				2A322F97212F254300ADF002 /* PensionCheckOutCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +507,7 @@
 				2A331586212A78870035A43A /* ServiceResult.swift in Sources */,
 				2A331588212A79460035A43A /* Data+Decoder.swift in Sources */,
 				C4DEE554211D287A00DEFC8A /* SearchViewCell.swift in Sources */,
+				2A322F9A212F2A2800ADF002 /* ThemeCell.swift in Sources */,
 				2A2AF01F212D23A200FAEF25 /* ReservationViewController.swift in Sources */,
 				2A33157E212A5EE60035A43A /* User.swift in Sources */,
 				2AB0EE4B2114025B00A3C4BF /* extension.swift in Sources */,
@@ -517,9 +526,7 @@
 				2AB0EE552114033300A3C4BF /* LocationViewController.swift in Sources */,
 				2AB0EE6D211404E200A3C4BF /* Page.swift in Sources */,
 				C4221EB5212D612500A3DC6E /* SubLocationViewController.swift in Sources */,
-				2A322F8B212EBB5900ADF002 /* DetailHeaderView.swift in Sources */,
 				2AB0EE66211403FD00A3C4BF /* PageCell.swift in Sources */,
-				2A322F8D212EBC2B00ADF002 /* PensionViewController.swift in Sources */,
 				2A2AF025212D362C00FAEF25 /* SqlConnectViewController.swift in Sources */,
 				2AB0EE44211401AB00A3C4BF /* Global.swift in Sources */,
 				2AB0EE62211403CF00A3C4BF /* SingupDetailViewController.swift in Sources */,
@@ -537,6 +544,7 @@
 				2AB0EE4F211402E200A3C4BF /* ButtonStyle.swift in Sources */,
 				2AB0EE46211401B300A3C4BF /* Shopinfo.swift in Sources */,
 				2AB0EE2A2114011600A3C4BF /* AppDelegate.swift in Sources */,
+				2A322F96212F254300ADF002 /* PensionCheckOutCell.swift in Sources */,
 				2A1C4D67211FFE4900D7E051 /* DetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
