@@ -225,7 +225,6 @@
 			children = (
 				2AB0EE292114011600A3C4BF /* AppDelegate.swift */,
 				2AB0EE412114018B00A3C4BF /* HomeTableViewCell.swift */,
-				C4FCBC572126C3A2008803E8 /* PensionData.swift */,
 				C4221EB8212D673700A3DC6E /* SubLocationViewCell.swift */,
 				C4DEE553211D287A00DEFC8A /* SearchViewCell.swift */,
 				2A331582212A78490035A43A /* Service_1 */,
@@ -275,6 +274,7 @@
 		2AB0EE3D2114012E00A3C4BF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C4FCBC572126C3A2008803E8 /* PensionData.swift */,
 				2AB0EE43211401AB00A3C4BF /* Global.swift */,
 				2AB0EE45211401B300A3C4BF /* Shopinfo.swift */,
 				2AB0EE47211401BD00A3C4BF /* Boardinfo.swift */,

@@ -4,7 +4,7 @@
 //
 //  Created by seob on 2018. 8. 22..
 //  Copyright © 2018년 seob. All rights reserved.
-// 테스트용
+// 테스트용 sqlite3
 
 import UIKit
 import SQLite
