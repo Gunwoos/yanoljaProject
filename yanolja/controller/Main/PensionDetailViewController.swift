@@ -27,8 +27,6 @@ class PensionDetailViewController: BaseViewController {
         super.viewDidLoad()
         DetailTableView.delegate = self
         DetailTableView.dataSource = self
-          
-        
  
         let TopCellNib = UINib.init(nibName: TopCellId, bundle: nil)
         DetailTableView.register(TopCellNib, forCellReuseIdentifier: TopCellId)
@@ -45,6 +43,8 @@ class PensionDetailViewController: BaseViewController {
         let idx = m_appDelegate.m_pensionInfo.pk
         let sub_locationNum =  m_appDelegate.m_pensionInfo.sublocation
         fetchPensionDetail(subLocation: sub_locationNum!, pk: idx)
+        self.navigationItem.title = "펜션상세보기"
+         
         view.addSubview(DetailTableView)
         
     }
@@ -52,7 +52,7 @@ class PensionDetailViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-  
+ 
 
    private func fetchPensionDetail(subLocation: String, pk: Int){
         if pensionData.count == pensionNum{
